@@ -1,0 +1,6 @@
+﻿  Source.cpp
+C:\dev\Mob_Engine\Mob-Engine\Mob_Engine\MOB_Engine.h(5,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+Source.obj : error LNK2019: unresolved external symbol "public: __cdecl MOB_Application::MOB_Application(void)" (??0MOB_Application@@QEAA@XZ) referenced in function SDL_main
+Source.obj : error LNK2019: unresolved external symbol "public: void __cdecl MOB_Application::createGameObject(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?createGameObject@MOB_Application@@QEAAXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z) referenced in function SDL_main
+Source.obj : error LNK2019: unresolved external symbol "public: void __cdecl MOB_Application::addGraphicsToGameObject(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int,int)" (?addGraphicsToGameObject@MOB_Application@@QEAAXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0HH@Z) referenced in function SDL_main
+C:\dev\Mob_Engine\Mob-Engine\x64\Debug\SandboxTest.exe : fatal error LNK1120: 3 unresolved externals
