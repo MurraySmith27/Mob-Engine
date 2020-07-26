@@ -51,7 +51,7 @@ private:
 	void flip();
 
 	std::map<std::string, SDL_Texture*> loadedTextures;
-	std::map<std::string, IDrawable> drawables;
+	std::map<std::string, IDrawable*> drawables;
 	SDL_Window* _window;
 	SDL_Renderer* _renderer;
 };

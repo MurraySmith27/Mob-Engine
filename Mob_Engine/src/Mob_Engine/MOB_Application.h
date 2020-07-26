@@ -23,8 +23,8 @@ public:
 	void start();
 
 	void frameUpdate();
+
 private:
-	std::vector<IScriptable>* scriptableObjects;
 	MOB_Graphics* graphics = new MOB_Graphics();
 
 	/* keys: gameobject names, values: scripts associated with these gameobjects.

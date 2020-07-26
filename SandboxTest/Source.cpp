@@ -11,5 +11,9 @@ int main(int argc, char** argv) {
 
 	app->addGraphicsToGameObject(goName, *(new std::string("Assets/Sprites/BlacksmithMainPose.png")), 14, 19);
 
+	app->run();
+
+	delete app;
+
 	return 0;
 }

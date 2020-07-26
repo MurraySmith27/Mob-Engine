@@ -9,7 +9,12 @@
 */
 class MOB_API IDrawable {
 public:
+	
 
+	virtual ~IDrawable() {
+		SDL_DestroyTexture(_texture);
+		delete _texture;
+	}
 
 	/*Change the destination rectangle of the drawable. The object will then be rendered at
 		(<x>,<y>) with width <w> and height <h>.

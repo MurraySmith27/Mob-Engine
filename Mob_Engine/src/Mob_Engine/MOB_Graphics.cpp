@@ -13,8 +13,13 @@ MOB_Graphics::MOB_Graphics() {
 
 MOB_Graphics::~MOB_Graphics() {
 	SDL_DestroyWindow(_window);
-
+	
 	SDL_DestroyRenderer(_renderer);
+	
+	loadedTextures.clear();
+
+	drawables.clear();
+
 
 	SDL_Quit();
 }
@@ -22,7 +27,7 @@ MOB_Graphics::~MOB_Graphics() {
 void MOB_Graphics::renderObject(MOB_GameObject* gameObject) {
 	SDL_Texture* tex = loadTexture(_renderer, gameObject->getGraphicFilePath());
 	MOB_Sprite* newSprite = new MOB_Sprite(tex, gameObject->getGraphicW(), gameObject->getGraphicH());
-	drawables.emplace(gameObject->getName(), *newSprite);
+	drawables.emplace(gameObject->getName(), newSprite);
 }
 
 
@@ -53,14 +58,14 @@ SDL_Texture* MOB_Graphics::loadTexture(SDL_Renderer* renderer, std::string fileP
 }
 
 void MOB_Graphics::updateRenderLocation(std::string gameObjectName, int x, int y, int w, int h) {
-	drawables.at(gameObjectName).setDestinationRect(x, y, w, h);
+	drawables.at(gameObjectName)->setDestinationRect(x, y, w, h);
 }
 
 
 void MOB_Graphics::blitSurfaces() {
-	for (std::map<std::string, IDrawable>::iterator it = drawables.begin(); it != drawables.end(); it++) {
-		SDL_RenderCopy(_renderer, drawables[it->first].getTexture(),
-			&drawables[it->first].getSrcRect(), &drawables[it->first].getDestRect());
+	for (std::map<std::string, IDrawable*>::iterator it = drawables.begin(); it != drawables.end(); it++) {
+		SDL_RenderCopy(_renderer, drawables[it->first]->getTexture(),
+			&drawables[it->first]->getSrcRect(), &drawables[it->first]->getDestRect());
 	}
 }
 

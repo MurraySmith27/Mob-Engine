@@ -56,10 +56,12 @@ project "Mob_Engine"
     filter "configurations:Debug"
         defines "MOB_DEBUG"
         symbols "On"
+        buildoptions "/MDd"
 
     filter "configurations:Release"
         defines "MOB_RELEASE"
         optimize "On"
+        buildoptions "/MD"
 
 project "SandboxTest"
     location "SandboxTest"
@@ -102,8 +104,10 @@ project "SandboxTest"
     filter "configurations:Debug"
         defines "MOB_DEBUG"
         symbols "On"
+        buildoptions "/MDd"
 
     filter "configurations:Release"
         defines "MOB_RELEASE"
         optimize "On"
+        buildoptions "/MD"
     

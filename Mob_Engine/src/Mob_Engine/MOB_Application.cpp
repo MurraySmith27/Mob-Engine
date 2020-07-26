@@ -5,7 +5,13 @@
 MOB_Application::MOB_Application() {}
 
 MOB_Application::~MOB_Application() {
-
+	delete graphics;
+	for (std::map<std::string, MOB_Script*>::iterator it = scripts.begin(); it != scripts.end(); it++) {
+		delete it->second;
+	}
+	for (std::map<std::string, MOB_GameObject*>::iterator it = gameObjects.begin(); it != gameObjects.end(); it++) {
+		delete it->second;
+	}
 }
 
 void MOB_Application::run() {
@@ -44,8 +50,8 @@ void MOB_Application::addGraphicsToGameObject(std::string gameObjectName, std::s
 
 void MOB_Application::start() {
 
-	for (int i = 0; i < scriptableObjects->size(); i++) {
-		MOB_Script* script = scripts.at(scriptableObjects->at(i).getName());
+	for (std::map<std::string, MOB_Script*>::iterator it = scripts.begin(); it != scripts.end(); it++) {
+		MOB_Script* script = it->second;
 		if (script != NULL) {
 			//TODO: Replace this with whatever python stuff works with the script
 			script->start();
@@ -54,8 +60,8 @@ void MOB_Application::start() {
 }
 
 void MOB_Application::frameUpdate() {
-	for (int i = 0; i < scriptableObjects->size(); i++) {
-		MOB_Script* script = scripts.at(scriptableObjects->at(i).getName());
+	for (std::map<std::string, MOB_Script*>::iterator it = scripts.begin(); it != scripts.end(); it++) {
+		MOB_Script* script = it->second;
 		if (script != NULL) {
 			//TODO: Replace this with whatever python stuff works with the script
 			script->frameUpdate();

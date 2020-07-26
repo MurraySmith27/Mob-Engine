@@ -7,7 +7,6 @@ class MOB_API MOB_Sprite : public IDrawable
 {
 public:
 	MOB_Sprite(SDL_Texture* texture, int w, int h);
-	~MOB_Sprite();
 };
 #endif
 
