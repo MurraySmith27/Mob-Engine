@@ -300,15 +300,20 @@
     <ClInclude Include="src\Mob_Engine\MOB_GameObject.h">
       <Filter>src\Mob_Engine</Filter>
     </ClInclude>
-    <ClInclude Include="src\Mob_Engine\MOB_Graphics.h">
-      <Filter>src\Mob_Engine</Filter>
-    </ClInclude>
     <ClInclude Include="src\Mob_Engine\MOB_Script.h">
       <Filter>src\Mob_Engine</Filter>
     </ClInclude>
     <ClInclude Include="src\Mob_Engine\MOB_Sprite.h">
       <Filter>src\Mob_Engine</Filter>
     </ClInclude>
+    <ClInclude Include="src\Mob_Engine\MOB_TransformComponent.h">
+      <Filter>src\Mob_Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mob_Engine\MOB_RenderingComponent.h" />
+    <ClInclude Include="src\Mob_Engine\MOB_RenderingComponentHandler.h" />
+    <ClInclude Include="src\Mob_Engine\IComponentHandler.h" />
+    <ClInclude Include="src\Mob_Engine\MOB_TransformComponentHandler.h" />
+    <ClInclude Include="src\Mob_Engine\ComponentSystem.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Mob_Engine\MOB_Application.cpp">
@@ -317,12 +322,16 @@
     <ClCompile Include="src\Mob_Engine\MOB_GameObject.cpp">
       <Filter>src\Mob_Engine</Filter>
     </ClCompile>
-    <ClCompile Include="src\Mob_Engine\MOB_Graphics.cpp">
-      <Filter>src\Mob_Engine</Filter>
-    </ClCompile>
     <ClCompile Include="src\Mob_Engine\MOB_Sprite.cpp">
       <Filter>src\Mob_Engine</Filter>
     </ClCompile>
+    <ClCompile Include="src\Mob_Engine\MOB_TransformComponent.cpp">
+      <Filter>src\Mob_Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mob_Engine\MOB_RenderingComponent.cpp" />
+    <ClCompile Include="src\Mob_Engine\MOB_RenderingComponentHandler.cpp" />
+    <ClCompile Include="src\Mob_Engine\MOB_TransformComponentHandler.cpp" />
+    <ClCompile Include="src\Mob_Engine\ComponentSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Libraries\SDL2-2.0.12\lib\x64\SDL2.dll">

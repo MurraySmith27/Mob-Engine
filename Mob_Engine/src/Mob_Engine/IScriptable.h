@@ -1,5 +1,5 @@
-#ifndef SCRIPTABLE_HEADER
-#define SCRIPTABLE_HEADER
+//#ifndef SCRIPTABLE_HEADER
+//#define SCRIPTABLE_HEADER
 #include <string>
 #include "Core.h"
 /*An interface describing script-related behaviour for all scriptable objects such as GameObjects.
@@ -31,4 +31,4 @@ private:
 	std::string scriptFilePath;
 };
 
-#endif
+//#endif

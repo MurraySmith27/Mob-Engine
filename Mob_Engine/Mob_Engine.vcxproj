@@ -105,6 +105,7 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Mob_Engine\ComponentSystem.h" />
     <ClInclude Include="Libraries\SDL2-2.0.12\include\SDL.h" />
     <ClInclude Include="Libraries\SDL2-2.0.12\include\SDL_assert.h" />
     <ClInclude Include="Libraries\SDL2-2.0.12\include\SDL_atomic.h" />
@@ -190,21 +191,29 @@
     <ClInclude Include="Libraries\SDL2-2.0.12\include\SDL_vulkan.h" />
     <ClInclude Include="Libraries\SDL2-2.0.12\include\begin_code.h" />
     <ClInclude Include="Libraries\SDL2-2.0.12\include\close_code.h" />
+    <ClInclude Include="src\Mob_Engine\MOB_TransformComponentHandler.h" />
+    <ClInclude Include="src\Mob_Engine\IComponentHandler.h" />
+    <ClInclude Include="src\Mob_Engine\MOB_RenderingComponentHandler.h" />
+    <ClInclude Include="src\Mob_Engine\MOB_RenderingComponent.h" />
     <ClInclude Include="src\MOB_Engine.h" />
     <ClInclude Include="src\Mob_Engine\Core.h" />
     <ClInclude Include="src\Mob_Engine\IDrawable.h" />
     <ClInclude Include="src\Mob_Engine\IScriptable.h" />
     <ClInclude Include="src\Mob_Engine\MOB_Application.h" />
     <ClInclude Include="src\Mob_Engine\MOB_GameObject.h" />
-    <ClInclude Include="src\Mob_Engine\MOB_Graphics.h" />
     <ClInclude Include="src\Mob_Engine\MOB_Script.h" />
     <ClInclude Include="src\Mob_Engine\MOB_Sprite.h" />
+    <ClInclude Include="src\Mob_Engine\MOB_TransformComponent.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Mob_Engine\ComponentSystem.cpp" />
+    <ClCompile Include="src\Mob_Engine\MOB_TransformComponentHandler.cpp" />
+    <ClCompile Include="src\Mob_Engine\MOB_RenderingComponentHandler.cpp" />
+    <ClCompile Include="src\Mob_Engine\MOB_RenderingComponent.cpp" />
     <ClCompile Include="src\Mob_Engine\MOB_Application.cpp" />
     <ClCompile Include="src\Mob_Engine\MOB_GameObject.cpp" />
-    <ClCompile Include="src\Mob_Engine\MOB_Graphics.cpp" />
     <ClCompile Include="src\Mob_Engine\MOB_Sprite.cpp" />
+    <ClCompile Include="src\Mob_Engine\MOB_TransformComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Libraries\SDL2-2.0.12\lib\x64\SDL2.dll" />

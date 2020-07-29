@@ -1,5 +1,5 @@
-#ifndef GRAPHICS_HEADER
-#define GRAPHICS_HEADER
+//#ifndef GRAPHICS_HEADER
+//#define GRAPHICS_HEADER
 #include "IScriptable.h"
 #include <string>
 #include "Core.h"
@@ -45,5 +45,5 @@ private:
 
 
 };
-#endif
+//#endif
 
