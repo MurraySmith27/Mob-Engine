@@ -1,15 +1,20 @@
 #include "MOB_GameObject.h"
 
-
-MOB_GameObject::MOB_GameObject(std::string initName) : name(initName){
-}
+MOB_GameObject::MOB_GameObject(std::string name, int initID) : IEntity(initID), m_name(name) {}
 
 MOB_GameObject::~MOB_GameObject() {
 
 }
 
-void MOB_GameObject::addGraphics(std::string& filePath, int w, int h) {
-	graphicFilePath = filePath;
-	graphicW = w;
-	graphicH = h;
+std::string MOB_GameObject::getName(){
+	return m_name;
 }
+
+void MOB_GameObject::OnBirth() {
+	//TODO: figure out a better solution for this and OnDeath();
+}
+
+void MOB_GameObject::OnDeath() {
+
+}
+

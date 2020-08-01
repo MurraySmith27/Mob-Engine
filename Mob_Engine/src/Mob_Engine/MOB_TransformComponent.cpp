@@ -3,6 +3,7 @@
 
 MOB_TransformComponent::MOB_TransformComponent(MOB_GameObject* attachedGameObject) {
 	gameObject = attachedGameObject;
+	componentType = "transform";
 }
 
 //Make sure not to delete the Game Object from here, as it will cause deallocation errors.

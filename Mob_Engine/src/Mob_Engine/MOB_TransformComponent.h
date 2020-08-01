@@ -3,7 +3,7 @@
 #include "MOB_GameObject.h"
 /* A component describing transform data for an attached Game Object.
 */
-class MOB_API MOB_TransformComponent
+class MOB_API MOB_TransformComponent : public IComponent
 {
 public:
 

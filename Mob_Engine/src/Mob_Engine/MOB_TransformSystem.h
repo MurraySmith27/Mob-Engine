@@ -1,7 +1,7 @@
 #include "MOB_TransformComponent.h"
 #include <string>
 #include <map>
-class MOB_TransformComponentHandler
+class MOB_TransformSystem
 {
 public:
 	//TODO: Implement this class.

@@ -1,49 +1,27 @@
-//#ifndef GRAPHICS_HEADER
-//#define GRAPHICS_HEADER
-#include "IScriptable.h"
+#ifndef GAMEOBJECT_HEADER
+#define GAMEOBJECT_HEADER
+#include "IEntity.h"
 #include <string>
 #include "Core.h"
-class MOB_API MOB_GameObject : public IScriptable {
+/* A basic game object. The simplest entity in the engine.
+*/
+class MOB_API MOB_GameObject : public IEntity {
 public:
-	MOB_GameObject(std::string name);
+
+	MOB_GameObject(std::string initName, int initID);
 
 	~MOB_GameObject();
 
-	/* Adds a graphical component to this gameobject from file path filePath. The image has width w and height h.
+	/* Return the name of this gameobject.
 	*/
-	void addGraphics(std::string& filePath, int w, int h);
+	std::string getName();
 
-	/* Updates the location of the graphical component to be rendered at x, y
-	*/
-	void updateGraphicLocation(int x, int y);
+	void OnBirth() override;
 
-
-	/* Return the file path to the graphical component associated with this Game Object.
-	*/
-	std::string getGraphicFilePath() const {
-		return graphicFilePath;
-	}
-
-	int getGraphicW() const {
-		return graphicW;
-	}
-
-	int getGraphicH() const {
-		return graphicH;
-	}
-
-private:
-	std::string name;
-
-	std::string graphicFilePath;
-
-	int graphicW;
+	void OnDeath() override;
 	
-	int graphicH;
-
-	std::string scriptFilePath;
-
-
+private:
+	std::string m_name;
 };
-//#endif
+#endif
 
