@@ -308,9 +308,8 @@
     <ClInclude Include="src\Mob_Engine\ISystem.h" />
     <ClInclude Include="src\Mob_Engine\MOB_RenderingComponent.h" />
     <ClInclude Include="src\Mob_Engine\MOB_RenderingSystem.h" />
-    <ClInclude Include="src\Mob_Engine\MOB_TransformSystem.h" />
     <ClInclude Include="src\Mob_Engine\EntityManager.h" />
-    <ClInclude Include="src\Mob_Engine\ComponentFactory.h" />
+    <ClInclude Include="src\Mob_Engine\MOB_ComponentFactory.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Mob_Engine\MOB_Application.cpp">
@@ -325,10 +324,10 @@
     <ClCompile Include="src\Mob_Engine\MOB_RenderingComponent.cpp" />
     <ClCompile Include="src\Mob_Engine\IEntity.cpp" />
     <ClCompile Include="src\Mob_Engine\MOB_RenderingSystem.cpp" />
-    <ClCompile Include="src\Mob_Engine\MOB_TransformSystem.cpp" />
     <ClCompile Include="src\Mob_Engine\EntityManager.cpp" />
     <ClCompile Include="src\Mob_Engine\MOB_GameObject.cpp" />
-    <ClCompile Include="src\Mob_Engine\ComponentFactory.cpp" />
+    <ClCompile Include="src\Mob_Engine\IDrawable.cpp" />
+    <ClCompile Include="src\Mob_Engine\MOB_ComponentFactory.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Libraries\SDL2-2.0.12\lib\x64\SDL2.dll">
@@ -380,5 +379,8 @@
     <None Include="SDL2_image.dll" />
     <None Include="libpng16-16.dll" />
     <None Include="zlib1.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="BlacksmithMainPose.png" />
   </ItemGroup>
 </Project>

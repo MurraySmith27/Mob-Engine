@@ -1,5 +1,5 @@
-#ifndef DRAWABLE_HEADER
-#define DRAWABLE_HEADER
+#ifndef IDRAWABLE_HEADER
+#define IDRAWABLE_HEADER
 #include <SDL.h>
 #include <string>
 #include <map>
@@ -11,32 +11,17 @@ class MOB_API IDrawable {
 public:
 	
 
-	virtual ~IDrawable() {
-		SDL_DestroyTexture(_texture);
-		delete _texture;
-	}
+	virtual ~IDrawable();
 
 	/*Change the destination rectangle of the drawable. The object will then be rendered at
 		(<x>,<y>) with width <w> and height <h>.
 	*/
-	virtual void setDestinationRect(int newX, int newY, int newW, int newH) {
-		_destinationRectangle.x = newX;
-		_destinationRectangle.y = newY;
-		if (newW != NULL)
-			_destinationRectangle.w = newW;
-		if (newH != NULL)
-			_destinationRectangle.h = newH;
-	}
+	virtual void setDestinationRect(int newX, int newY, int newW, int newH);
 
 	/*Change the source rectangle of the drawable. The object will be grabbed from the rectangle specified here in the
 	drawable's source png.
 	*/
-	virtual void setSourceRect(int newX, int newY, int newW, int newH) {
-		_sourceRectangle.x = newX;
-		_sourceRectangle.y = newY;
-		_sourceRectangle.w = newW;
-		_sourceRectangle.h = newH;
-	}
+	virtual void setSourceRect(int newX, int newY, int newW, int newH);
 
 	/*Return rectangle describing the location on the screen at which the drawable will be drawn.
 	*/

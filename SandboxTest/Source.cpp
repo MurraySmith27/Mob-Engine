@@ -3,16 +3,12 @@
 
 int main(int argc, char** argv) {
 
-	MOB_Application* app = new MOB_Application();
+	MOB_Application* app = new MOB_Application("MOB Engine Test", 800, 800);
+	std::string goName = "test";
+	app->CreateGameObject(goName);
+	app->AddRenderingComponent(goName, "BlacksmithMainPose.png");
 
-	std::string goName = "my first sprite";
-
-	app->createGameObject(goName);
-
-	app->addGraphicsToGameObject(goName, *(new std::string("Assets/Sprites/BlacksmithMainPose.png")), 14, 19);
-
-	app->run();
-
+	app->Run();
 	delete app;
 
 	return 0;

@@ -1,10 +1,14 @@
+#ifndef ICOMPONENT_HEADER
+#define ICOMPONENT_HEADER
 
+#include "Core.h"
 /* An interface describing the functionality shared among all components.
 */
-class IComponent {
+class MOB_API IComponent {
 public:
 	/* A string identifier for the component type.
 	*/
-	std::string componentType;
+	static std::string componentType;
 
 };
+#endif

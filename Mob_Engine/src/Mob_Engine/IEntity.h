@@ -6,11 +6,10 @@
 
 /* An interface describing an entity in the program, which can have components attached to it.
 */
-class IEntity {
+class MOB_API IEntity {
 
 public:
 
-	IEntity(int ID);
 	virtual ~IEntity();
 
 
@@ -18,14 +17,14 @@ public:
 	*/
 	template<class T>
 	T* GetComponent() {
-		return m_Components.at(T.componentType);
+		return (T*)m_Components.at(T::componentType);
 	}
 
 	/* Adds a component to the entity.
 	*/
 	template<class T>
 	void AddComponent(T* component) {
-		m_Components.emplace(T.componentType, component);
+		m_Components.emplace(component->componentType, component);
 	}
 
 	/* Removes a component from the entity.
@@ -49,7 +48,15 @@ public:
 		return m_ID;
 	}
 
-private:
+	/* Return the name of this gameobject.
+	*/
+	std::string getName() {
+		return m_name;
+	}
+
+protected:
+
+	std::string m_name;
 
 	int m_ID;
 

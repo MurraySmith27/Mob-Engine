@@ -1,5 +1,9 @@
+#ifndef RENDERINGCOMPONENT_HEADER
+#define RENDERINGCOMPONENT_HEADER
+
 #include <SDL.h>
 #include "MOB_GameObject.h"
+#include "MOB_TransformComponent.h"
 #include "IDrawable.h"
 
 class MOB_API MOB_RenderingComponent : public IComponent
@@ -17,4 +21,5 @@ public:
 	IDrawable* drawable;
 
 };
+#endif
 

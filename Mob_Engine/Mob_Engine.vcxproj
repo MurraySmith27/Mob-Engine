@@ -105,7 +105,7 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="src\Mob_Engine\ComponentFactory.h" />
+    <ClInclude Include="src\Mob_Engine\MOB_ComponentFactory.h" />
     <ClInclude Include="src\Mob_Engine\EntityManager.h" />
     <ClInclude Include="Libraries\SDL2-2.0.12\include\SDL.h" />
     <ClInclude Include="Libraries\SDL2-2.0.12\include\SDL_assert.h" />
@@ -194,7 +194,6 @@
     <ClInclude Include="Libraries\SDL2-2.0.12\include\close_code.h" />
     <ClInclude Include="src\Mob_Engine\IComponent.h" />
     <ClInclude Include="src\Mob_Engine\IEntity.h" />
-    <ClInclude Include="src\Mob_Engine\MOB_TransformSystem.h" />
     <ClInclude Include="src\Mob_Engine\ISystem.h" />
     <ClInclude Include="src\Mob_Engine\MOB_RenderingSystem.h" />
     <ClInclude Include="src\Mob_Engine\MOB_RenderingComponent.h" />
@@ -207,11 +206,11 @@
     <ClInclude Include="src\Mob_Engine\MOB_TransformComponent.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Mob_Engine\ComponentFactory.cpp" />
+    <ClCompile Include="src\Mob_Engine\MOB_ComponentFactory.cpp" />
     <ClCompile Include="src\Mob_Engine\EntityManager.cpp" />
+    <ClCompile Include="src\Mob_Engine\IDrawable.cpp" />
     <ClCompile Include="src\Mob_Engine\IEntity.cpp" />
     <ClCompile Include="src\Mob_Engine\MOB_GameObject.cpp" />
-    <ClCompile Include="src\Mob_Engine\MOB_TransformSystem.cpp" />
     <ClCompile Include="src\Mob_Engine\MOB_RenderingSystem.cpp" />
     <ClCompile Include="src\Mob_Engine\MOB_RenderingComponent.cpp" />
     <ClCompile Include="src\Mob_Engine\MOB_Application.cpp" />
@@ -238,6 +237,9 @@
     <None Include="SDL2_image.dll" />
     <None Include="libpng16-16.dll" />
     <None Include="zlib1.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="BlacksmithMainPose.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

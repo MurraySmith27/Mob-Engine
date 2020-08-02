@@ -1,23 +1,28 @@
-#include "MOB_TransformSystem.h"
+#ifndef RENDERINGSYSTEM_HEADER
+#define RENDERINGSYSTEM_HEADER
+
 #include "MOB_RenderingComponent.h"
 #include "EntityManager.h"
 #include <vector>
 #include "ISystem.h"
 #include <SDL.h>
-/* Handles all RenderingComponents.
+#include "MOB_Sprite.h"
+/* Handles all Rendering in the program. All methods entities operated on here have a transform component and a rendering component.
 */
-class MOB_RenderingSystem : public ISystem
+class MOB_API MOB_RenderingSystem : public ISystem
 {
 public:
 	
 
 	/* Initializes a new RenderingSystem using window to initialize the renderer.
 	*/
-	MOB_RenderingSystem(SDL_Window* window);
+	MOB_RenderingSystem(SDL_Renderer* renderer);
 
 	~MOB_RenderingSystem();
 
-	/* Called on program startup.
+
+
+	/* Called on startup.
 	*/
 	void Start();
 
@@ -27,7 +32,10 @@ public:
 
 	/* Changes the background color of the screen.
 	*/
-	void changeRenderBackgroundColor(int r, int g, int b);
+	void ChangeRenderBackgroundColor(SDL_Renderer* renderer, int r, int g, int b);
+
+
+private:
 
 	/* Copies the texture from renderingComp to the renderer using position information from transformComp
 	*/
@@ -36,21 +44,6 @@ public:
 	/* Updates the position of the entity to be rendered at the right place.
 	*/
 	void UpdatePositionFromTransform(MOB_RenderingComponent* renderingComp, MOB_TransformComponent* transformComp);
-
-
-private:
-
-	/* Clear the renderer of all current images.
-	*/
-	void clear();
-
-	/* Update the renderer and display the buffered images to the screen.
-	*/
-	void flip();
-
-	/* Loads and returns a texture at file path specified.
-	*/
-	SDL_Texture* loadTexture(std::string filePath);
 
 	/* Struct containing the components required for the entity to interact with this system.
 	*/
@@ -63,10 +56,8 @@ private:
 	*/
 	std::vector<ComponentTuple> m_componentTuples;
 
-	/* List of spritesheets that have already been loaded.
-	*/
-	std::map<std::string, SDL_Texture*> m_loadedTextures;
-
 	SDL_Renderer* m_renderer;
+
 };
+#endif
 

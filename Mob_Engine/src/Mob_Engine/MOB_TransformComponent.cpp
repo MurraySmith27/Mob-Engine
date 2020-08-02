@@ -1,8 +1,7 @@
 #include "MOB_TransformComponent.h"
 
 
-MOB_TransformComponent::MOB_TransformComponent(MOB_GameObject* attachedGameObject) {
-	gameObject = attachedGameObject;
+MOB_TransformComponent::MOB_TransformComponent() {
 	componentType = "transform";
 }
 

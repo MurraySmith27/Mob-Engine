@@ -1,13 +1,9 @@
 #include "MOB_GameObject.h"
 
-MOB_GameObject::MOB_GameObject(std::string name, int initID) : IEntity(initID), m_name(name) {}
+MOB_GameObject::MOB_GameObject(int initID, std::string name) : m_ID(initID), m_name(name) {}
 
 MOB_GameObject::~MOB_GameObject() {
 
-}
-
-std::string MOB_GameObject::getName(){
-	return m_name;
 }
 
 void MOB_GameObject::OnBirth() {

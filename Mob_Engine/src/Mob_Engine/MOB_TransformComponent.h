@@ -1,19 +1,14 @@
-//#ifndef TRANSFORM_COMPONENT_HEADER
-//#define TRANSFORM_COMPONENT_HEADER
+#ifndef TRANSFORMCOMPONENT_HEADER
+#define TRANSFORMCOMPONENT_HEADER
 #include "MOB_GameObject.h"
+#include "IComponent.h"
 /* A component describing transform data for an attached Game Object.
 */
 class MOB_API MOB_TransformComponent : public IComponent
 {
 public:
 
-	/* Pointer to the Game Object that this component is attached to.
-	*/
-	MOB_GameObject* gameObject;
-
-	/* Initializes a new Transform Component attached to the specified Game Object.
-	*/
-	MOB_TransformComponent(MOB_GameObject* attachedGameObject);
+	MOB_TransformComponent();
 
 	~MOB_TransformComponent();
 
@@ -48,5 +43,5 @@ private:
 	int _w = 0;
 	int _h = 0;
 };
-//#endif
+#endif
 
