@@ -2,7 +2,6 @@
 
 
 MOB_TransformComponent::MOB_TransformComponent() {
-	componentType = "transform";
 }
 
 //Make sure not to delete the Game Object from here, as it will cause deallocation errors.
@@ -27,3 +26,5 @@ void MOB_TransformComponent::stretch(int w, int h) {
 		_h = h;
 	}
 }
+
+std::string MOB_TransformComponent::componentType;

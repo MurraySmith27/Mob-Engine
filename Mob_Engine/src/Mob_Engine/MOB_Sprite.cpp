@@ -4,8 +4,8 @@
 #include <iostream>
 
 MOB_Sprite::MOB_Sprite(SDL_Texture* texture) {
-	int* w_p;
-	int* h_p;
+	int* w_p = new int();
+	int* h_p = new int();
 	SDL_QueryTexture(texture, NULL, NULL, w_p, h_p);
 	std::cout << *w_p << "\n";
 	_texture = texture;

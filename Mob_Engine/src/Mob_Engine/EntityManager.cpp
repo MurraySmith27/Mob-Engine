@@ -13,8 +13,9 @@ void EntityManager::CreateGameObject(std::string name) {
 
 EntityManager* EntityManager::getEntityManager() {
 
-	if (!instance) {
+	if (!m_Initialized) {
 		instance = new EntityManager;
+		m_Initialized = true;
 	}
 	return instance;
 }
@@ -26,3 +27,7 @@ IEntity* EntityManager::findEntity(std::string name) {
 		}
 	}
 }
+
+EntityManager* EntityManager::instance;
+
+bool EntityManager::m_Initialized;

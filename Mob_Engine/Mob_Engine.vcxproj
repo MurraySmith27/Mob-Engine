@@ -206,6 +206,7 @@
     <ClInclude Include="src\Mob_Engine\MOB_TransformComponent.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Mob_Engine\IComponent.cpp" />
     <ClCompile Include="src\Mob_Engine\MOB_ComponentFactory.cpp" />
     <ClCompile Include="src\Mob_Engine\EntityManager.cpp" />
     <ClCompile Include="src\Mob_Engine\IDrawable.cpp" />

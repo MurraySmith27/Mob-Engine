@@ -328,6 +328,7 @@
     <ClCompile Include="src\Mob_Engine\MOB_GameObject.cpp" />
     <ClCompile Include="src\Mob_Engine\IDrawable.cpp" />
     <ClCompile Include="src\Mob_Engine\MOB_ComponentFactory.cpp" />
+    <ClCompile Include="src\Mob_Engine\IComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Libraries\SDL2-2.0.12\lib\x64\SDL2.dll">

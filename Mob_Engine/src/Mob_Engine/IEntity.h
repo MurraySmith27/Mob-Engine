@@ -24,14 +24,14 @@ public:
 	*/
 	template<class T>
 	void AddComponent(T* component) {
-		m_Components.emplace(component->componentType, component);
+		m_Components.emplace(T::componentType, component);
 	}
 
 	/* Removes a component from the entity.
 	*/
 	template<class T>
 	void RemoveComponent() {
-		m_Components.erase(T.componentType);
+		m_Components.erase(T::componentType);
 	}
 
 	/* Called when the entity is created in the game context.

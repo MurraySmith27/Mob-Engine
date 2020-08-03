@@ -31,8 +31,10 @@ public:
 private:
 
 	static EntityManager* instance;
+	
+	static bool m_Initialized;
 
-	static int m_IDGenerator;
+	int m_IDGenerator;
 
 	std::vector<IEntity*> m_entities;
 };

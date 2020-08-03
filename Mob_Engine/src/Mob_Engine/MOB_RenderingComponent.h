@@ -20,6 +20,8 @@ public:
 	*/
 	IDrawable* drawable;
 
+	static std::string componentType;
+
 };
 #endif
 
