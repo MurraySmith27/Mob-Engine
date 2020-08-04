@@ -23,16 +23,16 @@ MOB_Application::~MOB_Application() {
 	SDL_DestroyRenderer(m_renderer);
 }
 
-void MOB_Application::AddRenderingComponent(std::string gameObjectName, std::string filePath){
+void MOB_Application::AddRenderingComponent(std::string& gameObjectName, std::string& filePath){
 	//TODO:Components are changing when these functions return, causing their members to be all wack. look into this.
 	m_componentFactory->AddRenderingComponent(m_renderer, gameObjectName, filePath);
 }
 
-void MOB_Application::AddTransformComponent(std::string gameObjectName) {
+void MOB_Application::AddTransformComponent(std::string& gameObjectName) {
 	m_componentFactory->AddTransformComponent(gameObjectName);
 }
 
-void MOB_Application::CreateGameObject(std::string name) {
+void MOB_Application::CreateGameObject(std::string& name) {
 	MOB_EntityManager::getEntityManager()->CreateGameObject(name);
 }
 

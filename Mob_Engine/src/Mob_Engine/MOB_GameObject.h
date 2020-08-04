@@ -8,24 +8,15 @@
 class MOB_API MOB_GameObject : public IEntity {
 public:
 
-	MOB_GameObject(int initID, std::string initName);
+	MOB_GameObject(int initID, std::string& initName);
 
 	~MOB_GameObject();
-
-	std::string getName() override {
-		return m_name;
-	}
 
 
 	void OnBirth() override;
 
 	void OnDeath() override;
 	
-private:
-
-	int m_ID;
-
-	std::string m_name;
 };
 #endif
 

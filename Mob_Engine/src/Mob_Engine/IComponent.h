@@ -7,6 +7,9 @@
 */
 class MOB_API IComponent {
 public:
+
+	virtual ~IComponent();
+
 	/* A string identifier for the component type.
 	*/
 	static std::string componentType;

@@ -10,6 +10,8 @@ class MOB_API IEntity {
 
 public:
 
+	IEntity(int initID, std::string& initName);
+
 	virtual ~IEntity();
 
 
@@ -17,14 +19,14 @@ public:
 	*/
 	template<class T>
 	T* GetComponent() {
-		return (T*)&m_Components.at(T::componentType);
+		return dynamic_cast<T*>(m_Components.at(T::componentType));
 	}
 
 	/* Adds a component to the entity.
 	*/
 	template<class T>
-	void AddComponent(T& component) {
-		m_Components.emplace(T::componentType, (IComponent)component);
+	void AddComponent(T* component) {
+		m_Components.emplace(T::componentType, component);
 	}
 
 	/* Removes a component from the entity.
@@ -36,15 +38,15 @@ public:
 
 	/* Called when the entity is created in the game context.
 	*/
-	virtual void OnBirth() = 0;
+	virtual void OnBirth();
 
 	/* Called when the entity is removed in the game context.
 	*/
-	virtual void OnDeath() = 0;
+	virtual void OnDeath();
 
 	/* Return the unique ID of the entity
 	*/
-	int getID() {
+	virtual int getID() {
 		return m_ID;
 	}
 
@@ -60,7 +62,7 @@ protected:
 
 	int m_ID;
 
-	std::map<std::string, IComponent> m_Components;
+	std::map<std::string, IComponent*> m_Components;
 
 };
 #endif

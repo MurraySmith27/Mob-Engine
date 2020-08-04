@@ -1,6 +1,6 @@
 #include "MOB_GameObject.h"
 
-MOB_GameObject::MOB_GameObject(int initID, std::string name) : m_ID(initID), m_name(name) {}
+MOB_GameObject::MOB_GameObject(int initID, std::string& name) : IEntity(initID, name) {}
 
 MOB_GameObject::~MOB_GameObject() {
 	

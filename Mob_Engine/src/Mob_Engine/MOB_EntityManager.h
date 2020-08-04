@@ -13,11 +13,11 @@ public:
 
 	/* Return std::vector containing all entity objects.
 	*/
-	std::vector<IEntity*>& getEntities();
+	std::vector<IEntity>& getEntities();
 	
 	/* Create a new Game Object with specified name
 	*/
-	void CreateGameObject(std::string name);
+	void CreateGameObject(std::string& name);
 
 	/* Returns singleon instance of EntityManager
 	*/
@@ -25,7 +25,7 @@ public:
 
 	/* Return a pointer to the entity with the specified name
 	*/
-	IEntity* findEntity(std::string name);
+	IEntity* FindEntity(std::string& name);
 
 
 private:
@@ -34,9 +34,9 @@ private:
 	
 	static bool m_Initialized;
 
-	int m_IDGenerator;
+	int m_IDGenerator = 0;
 
-	std::vector<IEntity*> m_entities;
+	std::vector<IEntity> m_entities;
 };
 #endif
 

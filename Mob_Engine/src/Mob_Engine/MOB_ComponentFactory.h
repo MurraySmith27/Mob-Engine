@@ -19,15 +19,15 @@ public:
 
 	/* Adds a new RenderingComponent to the Entity with the specified name, and a texture loaded from filePath.
 	*/
-	void AddRenderingComponent(SDL_Renderer* renderer, std::string name, std::string filePath);
+	void AddRenderingComponent(SDL_Renderer* renderer, std::string& name, std::string& filePath);
 
 	/* Adds a new TransformComponent to the Entity with the specified name
 	*/
-	void AddTransformComponent(std::string name);
+	void AddTransformComponent(std::string& name);
 
 	/* Loads and returns a texture at file path specified.
 	*/
-	SDL_Texture* LoadTexture(SDL_Renderer* renderer, std::string filePath);
+	SDL_Texture* LoadTexture(SDL_Renderer* renderer, std::string& filePath);
 
 private:
 	/* List of spritesheets that have already been loaded.

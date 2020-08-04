@@ -19,15 +19,15 @@ public:
 
 	/*Create a new Game Object with specified name and no components attached
 	*/
-	void CreateGameObject(std::string name);
+	void CreateGameObject(std::string& name);
 
 	/* Adds a graphical component to the Entity with the specified name. The associated sprite will be loaded in from filePath
 	*/
-	void AddRenderingComponent(std::string gameObjectName, std::string filePath);
+	void AddRenderingComponent(std::string& gameObjectName, std::string& filePath);
 
 	/* Adds a transform component to the game object, initializing the position of the game object to be (x,y)
 	*/
-	void AddTransformComponent(std::string gameObjectName);
+	void AddTransformComponent(std::string& gameObjectName);
 
 	
 private:
