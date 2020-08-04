@@ -25,6 +25,10 @@ public:
 	*/
 	void AddRenderingComponent(std::string gameObjectName, std::string filePath);
 
+	/* Adds a transform component to the game object, initializing the position of the game object to be (x,y)
+	*/
+	void AddTransformComponent(std::string gameObjectName);
+
 	
 private:
 	std::vector<ISystem*> m_systems;

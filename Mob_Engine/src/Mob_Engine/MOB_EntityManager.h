@@ -7,7 +7,7 @@
 #include "MOB_GameObject.h"
 /* A singleton class 
 */
-class MOB_API EntityManager
+class MOB_API MOB_EntityManager
 {
 public:
 
@@ -21,7 +21,7 @@ public:
 
 	/* Returns singleon instance of EntityManager
 	*/
-	static EntityManager* getEntityManager();
+	static MOB_EntityManager* getEntityManager();
 
 	/* Return a pointer to the entity with the specified name
 	*/
@@ -30,7 +30,7 @@ public:
 
 private:
 
-	static EntityManager* instance;
+	static MOB_EntityManager* instance;
 	
 	static bool m_Initialized;
 

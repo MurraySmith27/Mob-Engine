@@ -5,7 +5,7 @@
 #include <map>
 #include "IDrawable.h"
 #include "MOB_Sprite.h"
-#include "EntityManager.h"
+#include "MOB_EntityManager.h"
 #include "MOB_RenderingComponent.h"
 /* Holds methods for creating and adding new components.
 */

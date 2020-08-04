@@ -3,7 +3,7 @@
 MOB_GameObject::MOB_GameObject(int initID, std::string name) : m_ID(initID), m_name(name) {}
 
 MOB_GameObject::~MOB_GameObject() {
-
+	
 }
 
 void MOB_GameObject::OnBirth() {

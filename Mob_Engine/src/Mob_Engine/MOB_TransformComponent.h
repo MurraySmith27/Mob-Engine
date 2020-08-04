@@ -39,10 +39,10 @@ public:
 	static std::string componentType;
 private:
 
-	int _x = 0;
-	int _y = 0;
-	int _w = 0;
-	int _h = 0;
+	int _x;
+	int _y;
+	int _w;
+	int _h;
 
 };
 #endif

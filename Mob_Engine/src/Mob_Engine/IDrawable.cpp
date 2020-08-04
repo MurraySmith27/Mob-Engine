@@ -1,5 +1,8 @@
 #include "IDrawable.h"
 
+//TODO: Delete this
+#include <iostream>
+
 
 IDrawable::~IDrawable() {
 	SDL_DestroyTexture(_texture);
@@ -21,3 +24,4 @@ void IDrawable::setSourceRect(int newX, int newY, int newW, int newH) {
 	_sourceRectangle.w = newW;
 	_sourceRectangle.h = newH;
 }
+

@@ -44,7 +44,7 @@ public:
 protected:
 	//TODO: make some solution to access this from every instance of IDrawable or subclasses.
 	SDL_Texture* _texture = NULL;
-	SDL_Rect _sourceRectangle = { 0,0,0,0 };
-	SDL_Rect _destinationRectangle = { 0,0,0,0 };
+	SDL_Rect _sourceRectangle{ 0,0,0,0 };
+	SDL_Rect _destinationRectangle{ 0,0,0,0 };
 };
 #endif

@@ -288,13 +288,34 @@
     <ClInclude Include="src\Mob_Engine\Core.h">
       <Filter>src\Mob_Engine</Filter>
     </ClInclude>
+    <ClInclude Include="src\Mob_Engine\IComponent.h">
+      <Filter>src\Mob_Engine</Filter>
+    </ClInclude>
     <ClInclude Include="src\Mob_Engine\IDrawable.h">
+      <Filter>src\Mob_Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mob_Engine\IEntity.h">
+      <Filter>src\Mob_Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mob_Engine\ISystem.h">
       <Filter>src\Mob_Engine</Filter>
     </ClInclude>
     <ClInclude Include="src\Mob_Engine\MOB_Application.h">
       <Filter>src\Mob_Engine</Filter>
     </ClInclude>
+    <ClInclude Include="src\Mob_Engine\MOB_ComponentFactory.h">
+      <Filter>src\Mob_Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mob_Engine\MOB_EntityManager.h">
+      <Filter>src\Mob_Engine</Filter>
+    </ClInclude>
     <ClInclude Include="src\Mob_Engine\MOB_GameObject.h">
+      <Filter>src\Mob_Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mob_Engine\MOB_RenderingComponent.h">
+      <Filter>src\Mob_Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mob_Engine\MOB_RenderingSystem.h">
       <Filter>src\Mob_Engine</Filter>
     </ClInclude>
     <ClInclude Include="src\Mob_Engine\MOB_Sprite.h">
@@ -303,16 +324,33 @@
     <ClInclude Include="src\Mob_Engine\MOB_TransformComponent.h">
       <Filter>src\Mob_Engine</Filter>
     </ClInclude>
-    <ClInclude Include="src\Mob_Engine\IComponent.h" />
-    <ClInclude Include="src\Mob_Engine\IEntity.h" />
-    <ClInclude Include="src\Mob_Engine\ISystem.h" />
-    <ClInclude Include="src\Mob_Engine\MOB_RenderingComponent.h" />
-    <ClInclude Include="src\Mob_Engine\MOB_RenderingSystem.h" />
-    <ClInclude Include="src\Mob_Engine\EntityManager.h" />
-    <ClInclude Include="src\Mob_Engine\MOB_ComponentFactory.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Mob_Engine\IComponent.cpp">
+      <Filter>src\Mob_Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mob_Engine\IDrawable.cpp">
+      <Filter>src\Mob_Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mob_Engine\IEntity.cpp">
+      <Filter>src\Mob_Engine</Filter>
+    </ClCompile>
     <ClCompile Include="src\Mob_Engine\MOB_Application.cpp">
+      <Filter>src\Mob_Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mob_Engine\MOB_ComponentFactory.cpp">
+      <Filter>src\Mob_Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mob_Engine\MOB_EntityManager.cpp">
+      <Filter>src\Mob_Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mob_Engine\MOB_GameObject.cpp">
+      <Filter>src\Mob_Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mob_Engine\MOB_RenderingComponent.cpp">
+      <Filter>src\Mob_Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mob_Engine\MOB_RenderingSystem.cpp">
       <Filter>src\Mob_Engine</Filter>
     </ClCompile>
     <ClCompile Include="src\Mob_Engine\MOB_Sprite.cpp">
@@ -321,14 +359,6 @@
     <ClCompile Include="src\Mob_Engine\MOB_TransformComponent.cpp">
       <Filter>src\Mob_Engine</Filter>
     </ClCompile>
-    <ClCompile Include="src\Mob_Engine\MOB_RenderingComponent.cpp" />
-    <ClCompile Include="src\Mob_Engine\IEntity.cpp" />
-    <ClCompile Include="src\Mob_Engine\MOB_RenderingSystem.cpp" />
-    <ClCompile Include="src\Mob_Engine\EntityManager.cpp" />
-    <ClCompile Include="src\Mob_Engine\MOB_GameObject.cpp" />
-    <ClCompile Include="src\Mob_Engine\IDrawable.cpp" />
-    <ClCompile Include="src\Mob_Engine\MOB_ComponentFactory.cpp" />
-    <ClCompile Include="src\Mob_Engine\IComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Libraries\SDL2-2.0.12\lib\x64\SDL2.dll">
@@ -380,8 +410,5 @@
     <None Include="SDL2_image.dll" />
     <None Include="libpng16-16.dll" />
     <None Include="zlib1.dll" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="BlacksmithMainPose.png" />
   </ItemGroup>
 </Project>

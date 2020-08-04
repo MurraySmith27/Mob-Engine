@@ -2,7 +2,7 @@
 #define RENDERINGSYSTEM_HEADER
 
 #include "MOB_RenderingComponent.h"
-#include "EntityManager.h"
+#include "MOB_EntityManager.h"
 #include <vector>
 #include "ISystem.h"
 #include <SDL.h>
@@ -54,7 +54,7 @@ private:
 	
 	/* Storage of all component Tuples. This keeps the component data grouped.
 	*/
-	std::vector<ComponentTuple> m_componentTuples;
+	std::vector<ComponentTuple*> m_componentTuples;
 
 	SDL_Renderer* m_renderer;
 

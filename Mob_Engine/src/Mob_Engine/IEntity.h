@@ -17,14 +17,14 @@ public:
 	*/
 	template<class T>
 	T* GetComponent() {
-		return (T*)m_Components.at(T::componentType);
+		return (T*)&m_Components.at(T::componentType);
 	}
 
 	/* Adds a component to the entity.
 	*/
 	template<class T>
-	void AddComponent(T* component) {
-		m_Components.emplace(T::componentType, component);
+	void AddComponent(T& component) {
+		m_Components.emplace(T::componentType, (IComponent)component);
 	}
 
 	/* Removes a component from the entity.
@@ -50,7 +50,7 @@ public:
 
 	/* Return the name of this gameobject.
 	*/
-	std::string getName() {
+	virtual std::string getName() {
 		return m_name;
 	}
 
@@ -60,7 +60,7 @@ protected:
 
 	int m_ID;
 
-	std::map<std::string, IComponent*> m_Components;
+	std::map<std::string, IComponent> m_Components;
 
 };
 #endif

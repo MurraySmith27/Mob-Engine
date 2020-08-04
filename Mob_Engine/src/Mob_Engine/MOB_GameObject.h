@@ -12,6 +12,10 @@ public:
 
 	~MOB_GameObject();
 
+	std::string getName() override {
+		return m_name;
+	}
+
 
 	void OnBirth() override;
 

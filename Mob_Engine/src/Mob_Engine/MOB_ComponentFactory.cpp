@@ -12,11 +12,13 @@ void MOB_ComponentFactory::AddRenderingComponent(SDL_Renderer* renderer, std::st
 
 	//TODO: This is pretty non-extensible, look at implementing a drawablefactory?
 	IDrawable* drawable = new MOB_Sprite(LoadTexture(renderer, filePath));
-	EntityManager::getEntityManager()->findEntity(name)->AddComponent(new MOB_RenderingComponent(drawable));
+	MOB_RenderingComponent* component = new MOB_RenderingComponent(*drawable);
+	MOB_EntityManager::getEntityManager()->findEntity(name)->AddComponent(*component);
 }
 
 void MOB_ComponentFactory::AddTransformComponent(std::string name) {
-	EntityManager::getEntityManager()->findEntity(name)->AddComponent(new MOB_TransformComponent());
+	MOB_TransformComponent* component = new MOB_TransformComponent();
+	MOB_EntityManager::getEntityManager()->findEntity(name)->AddComponent(*component);
 }
 
 SDL_Texture* MOB_ComponentFactory::LoadTexture(SDL_Renderer* renderer, std::string filePath) {
@@ -43,5 +45,6 @@ SDL_Texture* MOB_ComponentFactory::LoadTexture(SDL_Renderer* renderer, std::stri
 		}
 	}
 	SDL_FreeSurface(surface);
+	
 	return texture;
 }
