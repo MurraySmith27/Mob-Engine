@@ -5,6 +5,8 @@
 #include "MOB_RenderingSystem.h"
 #include "MOB_ComponentFactory.h"
 #include "Core.h"
+#include "IScript.h"
+#include "MOB_TransformSystem.h"
 /* The main application class. To be initialized in any project using the Mob engine.
 */
 class MOB_API MOB_Application
@@ -29,6 +31,17 @@ public:
 	*/
 	void AddTransformComponent(std::string& gameObjectName);
 
+	/* Adds script to the gameobject with specified name.
+	*/
+	void AddScriptToGameObject(std::string& gameObjectName, IScript* script);
+
+	/* Runs all scripts FrameUpdate() methods.
+	*/
+	void RunAllScriptFrameUpdates();
+	
+	/* Runs all scripts Start() methods.
+	*/
+	void RunAllScriptStarts();
 	
 private:
 	std::vector<ISystem*> m_systems;

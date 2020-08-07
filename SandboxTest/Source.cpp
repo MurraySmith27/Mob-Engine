@@ -1,4 +1,5 @@
 #include "MOB_Engine.h"
+#include "BasicScript.h"
 #include <SDL.h>
 
 int main(int argc, char** argv) {
@@ -10,9 +11,13 @@ int main(int argc, char** argv) {
 	app->CreateGameObject(goName);
 	app->AddRenderingComponent(goName, spriteDir + "BlacksmithMainPose.png");
 	app->AddTransformComponent(goName);
+	
+	BasicScript* my_script = new BasicScript(goName);
+
+	app->AddScriptToGameObject(goName, my_script);
 
 	app->Run();
 	delete app;
-
+	delete my_script;
 	return 0;
 }

@@ -14,16 +14,26 @@ MOB_TransformComponent::~MOB_TransformComponent() {
 
 }
 
+void MOB_TransformComponent::Translate(int moveX, int moveY) {
+	if (moveX != 0) {
+		_x += moveX;
+	}
+	if (moveY != 0) {
+		_y += moveY;
+	}
+}
 
-void MOB_TransformComponent::changePosition(int x, int y) {
+
+void MOB_TransformComponent::ChangePosition(int x, int y) {
 	if (x != -1) {
 		_x = x;
-	} else if (y != -1) {
+	}
+	if (y != -1) {
 		_y = y;
 	}
 }
 
-void MOB_TransformComponent::stretch(int w, int h) {
+void MOB_TransformComponent::Stretch(int w, int h) {
 	if (w != -1) {
 		_w = w;
 	}

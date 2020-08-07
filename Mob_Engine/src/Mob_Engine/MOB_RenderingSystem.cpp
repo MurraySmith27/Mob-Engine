@@ -6,19 +6,19 @@
 
 MOB_RenderingSystem::MOB_RenderingSystem(SDL_Renderer* renderer) : m_renderer(renderer) {
 
-	std::vector<IEntity> entities = MOB_EntityManager::getEntityManager()->getEntities();
+	std::vector<IEntity*> entities = MOB_EntityManager::getEntityManager()->getEntities();
 
 	for (int i = 0; i < entities.size(); i++) {
-		ComponentTuple* components = new ComponentTuple;
-		components->transform = entities[i].GetComponent<MOB_TransformComponent>();
+		std::shared_ptr<ComponentTuple> components = std::make_shared<ComponentTuple>();
+		components->transform = entities[i]->GetComponent<MOB_TransformComponent>();
 		if (components->transform == NULL) {
-			std::cout << "Could not load in transform component for gameobject named: " << entities[i].getName() << "\n";
+			std::cout << "Could not load in transform component for gameobject named: " << entities[i]->getName() << "\n";
 		}
-		components->rendering = entities[i].GetComponent<MOB_RenderingComponent>();
+		components->rendering = entities[i]->GetComponent<MOB_RenderingComponent>();
 		if (components->rendering == NULL) {
-			std::cout << "Could not load in rendering component for gameobject named: " << entities[i].getName() << "\n";
+			std::cout << "Could not load in rendering component for gameobject named: " << entities[i]->getName() << "\n";
 		}
-		if (components->transform != NULL && components->rendering != NULL){
+		if (components->transform != NULL && components->rendering != NULL) {
 			m_componentTuples.push_back(components);
 		}
 	}

@@ -39,6 +39,9 @@ void MOB_Application::CreateGameObject(std::string& name) {
 void MOB_Application::Run() {
 	//Initialize the systems after all components have been added.
 	m_systems.push_back(new MOB_RenderingSystem(m_renderer));
+	m_systems.push_back(new MOB_TransformSystem());
+
+	RunAllScriptStarts();
 
 	SDL_Event e;
 
@@ -51,9 +54,40 @@ void MOB_Application::Run() {
 			}
 		}
 
+		
+		RunAllScriptFrameUpdates();
+
 		for (int i = 0; i < m_systems.size(); i++) {
 			m_systems[i]->FrameUpdate();
 		}
 		
 	}
+}
+
+void MOB_Application::RunAllScriptFrameUpdates() {
+	std::vector<IEntity*> entities = MOB_EntityManager::getEntityManager()->getEntities();
+
+	for (int i = 0; i < entities.size(); i++) {
+		std::vector<IScript*> scripts = entities[i]->getScripts();
+		for (int j = 0; j < scripts.size(); j++) {
+			scripts[j]->FrameUpdate();
+		}
+	}
+}
+
+void MOB_Application::RunAllScriptStarts() {
+	std::vector<IEntity*> entities = MOB_EntityManager::getEntityManager()->getEntities();
+
+	for (int i = 0; i < entities.size(); i++) {
+		std::vector<IScript*> scripts = entities[i]->getScripts();
+		for (int j = 0; j < scripts.size(); j++) {
+			scripts[j]->Start();
+		}
+	}
+}
+
+
+
+void MOB_Application::AddScriptToGameObject(std::string& gameObjectName, IScript* script) {
+	MOB_EntityManager::getEntityManager()->FindEntity(gameObjectName)->AddScript(script);
 }

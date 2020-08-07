@@ -1,10 +1,10 @@
 #ifndef ENTITYMANAGER_HEADER
 #define ENTITYMANAGER_HEADER
 
-#include "IEntity.h"
 #include <vector>
 #include <string>
 #include "MOB_GameObject.h"
+#include "IEntity.h"
 /* A singleton class 
 */
 class MOB_API MOB_EntityManager
@@ -13,7 +13,7 @@ public:
 
 	/* Return std::vector containing all entity objects.
 	*/
-	std::vector<IEntity>& getEntities();
+	std::vector<IEntity*>& getEntities();
 	
 	/* Create a new Game Object with specified name
 	*/
@@ -36,7 +36,7 @@ private:
 
 	int m_IDGenerator = 0;
 
-	std::vector<IEntity> m_entities;
+	std::vector<IEntity*> m_entities;
 };
 #endif
 

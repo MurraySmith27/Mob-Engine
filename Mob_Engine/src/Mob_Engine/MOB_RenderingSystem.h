@@ -7,6 +7,7 @@
 #include "ISystem.h"
 #include <SDL.h>
 #include "MOB_Sprite.h"
+#include <memory>
 /* Handles all Rendering in the program. All methods entities operated on here have a transform component and a rendering component.
 */
 class MOB_API MOB_RenderingSystem : public ISystem
@@ -54,7 +55,7 @@ private:
 	
 	/* Storage of all component Tuples. This keeps the component data grouped.
 	*/
-	std::vector<ComponentTuple*> m_componentTuples;
+	std::vector<std::shared_ptr<ComponentTuple>> m_componentTuples;
 
 	SDL_Renderer* m_renderer;
 

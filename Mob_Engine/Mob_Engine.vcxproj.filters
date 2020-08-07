@@ -294,9 +294,6 @@
     <ClInclude Include="src\Mob_Engine\IDrawable.h">
       <Filter>src\Mob_Engine</Filter>
     </ClInclude>
-    <ClInclude Include="src\Mob_Engine\IEntity.h">
-      <Filter>src\Mob_Engine</Filter>
-    </ClInclude>
     <ClInclude Include="src\Mob_Engine\ISystem.h">
       <Filter>src\Mob_Engine</Filter>
     </ClInclude>
@@ -324,15 +321,19 @@
     <ClInclude Include="src\Mob_Engine\MOB_TransformComponent.h">
       <Filter>src\Mob_Engine</Filter>
     </ClInclude>
+    <ClInclude Include="src\Mob_Engine\MOB_TransformSystem.h">
+      <Filter>src\Mob_Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mob_Engine\IEntity.h">
+      <Filter>src\Mob_Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mob_Engine\IScript.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Mob_Engine\IComponent.cpp">
       <Filter>src\Mob_Engine</Filter>
     </ClCompile>
     <ClCompile Include="src\Mob_Engine\IDrawable.cpp">
-      <Filter>src\Mob_Engine</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Mob_Engine\IEntity.cpp">
       <Filter>src\Mob_Engine</Filter>
     </ClCompile>
     <ClCompile Include="src\Mob_Engine\MOB_Application.cpp">
@@ -359,6 +360,13 @@
     <ClCompile Include="src\Mob_Engine\MOB_TransformComponent.cpp">
       <Filter>src\Mob_Engine</Filter>
     </ClCompile>
+    <ClCompile Include="src\Mob_Engine\MOB_TransformSystem.cpp">
+      <Filter>src\Mob_Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mob_Engine\IEntity.cpp">
+      <Filter>src\Mob_Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mob_Engine\IScript.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Libraries\SDL2-2.0.12\lib\x64\SDL2.dll">

@@ -1,8 +1,11 @@
 #ifndef ENTITY_HEADER
 #define ENTITY_HEADER
+#include "Core.h"
 #include <map>
 #include <string>
 #include "IComponent.h"
+#include <vector>
+#include "IScript.h"
 
 /* An interface describing an entity in the program, which can have components attached to it.
 */
@@ -36,6 +39,12 @@ public:
 		m_Components.erase(T::componentType);
 	}
 
+	/* Adds a script
+	*/
+	void AddScript(IScript* script) {
+		m_Scripts.push_back(script);
+	}
+
 	/* Called when the entity is created in the game context.
 	*/
 	virtual void OnBirth();
@@ -56,6 +65,10 @@ public:
 		return m_name;
 	}
 
+	virtual std::vector<IScript*>& getScripts() {
+		return m_Scripts;
+	}
+
 protected:
 
 	std::string m_name;
@@ -63,6 +76,8 @@ protected:
 	int m_ID;
 
 	std::map<std::string, IComponent*> m_Components;
+
+	std::vector<IScript*> m_Scripts;
 
 };
 #endif
