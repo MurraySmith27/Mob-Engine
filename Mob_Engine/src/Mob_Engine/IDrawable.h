@@ -16,7 +16,7 @@ public:
 	/*Change the destination rectangle of the drawable. The object will then be rendered at
 		(<x>,<y>) with width <w> and height <h>.
 	*/
-	virtual void setDestinationRect(int newX, int newY, int newW, int newH);
+	virtual void setDestinationRect(SDL_Rect* destinationRect);
 
 	/*Change the source rectangle of the drawable. The object will be grabbed from the rectangle specified here in the
 	drawable's source png.

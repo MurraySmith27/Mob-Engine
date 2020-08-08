@@ -9,13 +9,15 @@ IDrawable::~IDrawable() {
 	delete _texture;
 }
 
-void IDrawable::setDestinationRect(int newX, int newY, int newW, int newH) {
-	_destinationRectangle.x = newX;
-	_destinationRectangle.y = newY;
-	if (newW != NULL)
-		_destinationRectangle.w = newW;
-	if (newH != NULL)
-		_destinationRectangle.h = newH;
+void IDrawable::setDestinationRect(SDL_Rect* destinationRect) {
+	_destinationRectangle.x = destinationRect->x;
+	_destinationRectangle.y = destinationRect->y;
+	if (destinationRect->w != 0) {
+		_destinationRectangle.w = destinationRect->w;
+	}
+	if (destinationRect->h != 0) {
+		_destinationRectangle.h = destinationRect->h;
+	}
 }
 
 void IDrawable::setSourceRect(int newX, int newY, int newW, int newH) {

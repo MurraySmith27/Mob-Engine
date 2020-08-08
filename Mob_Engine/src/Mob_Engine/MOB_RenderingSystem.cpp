@@ -47,12 +47,12 @@ void MOB_RenderingSystem::FrameUpdate() {
 
 void MOB_RenderingSystem::RenderGameObject(MOB_RenderingComponent* renderingComp, MOB_TransformComponent* transformComp) {
 	UpdatePositionFromTransform(renderingComp, transformComp);
-	SDL_RenderCopy(m_renderer, renderingComp->drawable.getTexture(), &renderingComp->drawable.getSrcRect(), &renderingComp->drawable.getDestRect());
+	SDL_RenderCopyEx(m_renderer, renderingComp->drawable.getTexture(), &renderingComp->drawable.getSrcRect(), &renderingComp->drawable.getDestRect(), transformComp->getAngle(), NULL, transformComp->getFlip());
 }
 
 void MOB_RenderingSystem::UpdatePositionFromTransform(MOB_RenderingComponent* renderingComp, MOB_TransformComponent* transformComp) {
 	//TODO: this needs fixing. It's assigning random ints. Probably because of an unitialized pointer. renderingComp?
-	renderingComp->drawable.setDestinationRect(transformComp->getX(), transformComp->getY(), transformComp->getW(), transformComp->getH());
+	renderingComp->drawable.setDestinationRect(&transformComp->getPositionRect());
 }
 
 

@@ -26,6 +26,18 @@ public:
 	*/
 	void Stretch(std::string& gameObjectName, int w = -1, int h = -1);
 
+	/* Rotates the entity's position by angle degrees.
+	*/
+	void RotateBy(std::string& gameObjectName, double angle);
+
+	/* Sets the rotatio of the entity to angle degrees clockwise.
+	*/
+	void SetRotation(std::string& gameObjectName, double angle);
+
+	/* Flips the gameobject by one or both of the boolean specified for horizontal and vertical flips
+	*/
+	void Flip(std::string& gameObjectName, bool flipHorizontal, bool flipVertical);
+
 	void Start() override;
 
 	void FrameUpdate() override;

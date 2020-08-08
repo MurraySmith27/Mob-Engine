@@ -7,6 +7,7 @@
 */
 class MOB_API IComponent {
 public:
+	
 
 	virtual ~IComponent();
 

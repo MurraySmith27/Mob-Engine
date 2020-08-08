@@ -24,6 +24,18 @@ void MOB_TransformSystem::Stretch(std::string& gameObjectName, int w, int h) {
 	FetchTransform(gameObjectName)->Stretch(w, h);
 }
 
+void MOB_TransformSystem::RotateBy(std::string& gameObjectName, double angle) {
+	FetchTransform(gameObjectName)->RotateBy(angle);
+}
+
+void MOB_TransformSystem::SetRotation(std::string& gameObjectName, double angle) {
+	FetchTransform(gameObjectName)->SetRotation(angle);
+}
+
+void MOB_TransformSystem::Flip(std::string& gameObjectName, bool flipHorizontal, bool flipVertical) {
+	FetchTransform(gameObjectName)->Flip(flipHorizontal, flipVertical);
+}
+
 MOB_TransformComponent* MOB_TransformSystem::FetchTransform(std::string& gameObjectName) {
 	MOB_EntityManager* entityManager = MOB_EntityManager::getEntityManager();
 	IEntity* entity = entityManager->FindEntity(gameObjectName);

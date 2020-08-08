@@ -2,6 +2,7 @@
 #define TRANSFORMCOMPONENT_HEADER
 #include "MOB_GameObject.h"
 #include "IComponent.h"
+#include <SDL.h>
 /* A component describing transform data for an attached Game Object.
 */
 class MOB_API MOB_TransformComponent : public IComponent
@@ -24,29 +25,54 @@ public:
 	*/
 	void Translate(int moveX, int moveY);
 
+	/* Rotates the entity's position by angle degrees.
+	*/
+	void RotateBy(double angle);
+
+	/* Sets the rotatio of the entity to angle degrees clockwise.
+	*/
+	void SetRotation(double angle);
+
+	/* Flips the gameobject by one or both of the boolean specified for horizontal and vertical flips
+	*/
+	void Flip(bool flipHorizontal, bool flipVertical);
+
 	int getX() const {
-		return _x;
+		return m_positionRect.x;
 	}
 	
 	int getY() const {
-		return _y;
+		return m_positionRect.y;
 	}
 
 	int getW() const {
-		return _w;
+		return m_positionRect.w;
 	}
 
 	int getH() const {
-		return _h;
+		return m_positionRect.h;
+	}
+
+	SDL_Rect getPositionRect() {
+		return m_positionRect;
+	}
+
+	double getAngle() {
+		return angle;
+	}
+
+	SDL_RendererFlip getFlip() {
+		return flip;
 	}
 
 	static std::string componentType;
 private:
 
-	int _x;
-	int _y;
-	int _w;
-	int _h;
+	SDL_Rect m_positionRect{ 0, 0, 0, 0 };
+
+	double angle = 0;
+
+	SDL_RendererFlip flip = (SDL_RendererFlip)SDL_FLIP_NONE;
 
 };
 #endif
