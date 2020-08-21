@@ -332,6 +332,7 @@
     </ClInclude>
     <ClInclude Include="src\Mob_Engine\MOB_CollisionSystem.h" />
     <ClInclude Include="src\Mob_Engine\MOB_CollisionComponent.h" />
+    <ClInclude Include="src\Mob_Engine\MOB_SquareCollisionComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Mob_Engine\IComponent.cpp">
@@ -375,6 +376,7 @@
     </ClCompile>
     <ClCompile Include="src\Mob_Engine\MOB_CollisionSystem.cpp" />
     <ClCompile Include="src\Mob_Engine\MOB_CollisionComponent.cpp" />
+    <ClCompile Include="src\Mob_Engine\MOB_SquareCollisionComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Libraries\SDL2-2.0.12\lib\x64\SDL2.dll">

@@ -7,6 +7,7 @@
 #include "Core.h"
 #include "IScript.h"
 #include "MOB_TransformSystem.h"
+#include "MOB_CollisionSystem.h"
 /* The main application class. To be initialized in any project using the Mob engine.
 */
 class MOB_API MOB_Application
@@ -30,6 +31,11 @@ public:
 	/* Adds a transform component to the game object, initializing the position of the game object to be (x,y)
 	*/
 	void AddTransformComponent(std::string& gameObjectName);
+
+	//TODO: Add a collider factory that allows for easier creation of specific colliders.
+	/* Adds a square collider component to the game object.
+	*/
+	void AddSquareCollisionComponent(std::string& gameObjectName, double x, double y, double w, double h);
 
 	/* Adds script to the gameobject with specified name.
 	*/

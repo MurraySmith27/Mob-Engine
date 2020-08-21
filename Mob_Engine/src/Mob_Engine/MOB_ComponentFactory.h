@@ -7,6 +7,7 @@
 #include "MOB_Sprite.h"
 #include "MOB_EntityManager.h"
 #include "MOB_RenderingComponent.h"
+#include "MOB_SquareCollisionComponent.h"
 /* Holds methods for creating and adding new components.
 */
 class MOB_API MOB_ComponentFactory
@@ -24,6 +25,10 @@ public:
 	/* Adds a new TransformComponent to the Entity with the specified name
 	*/
 	void AddTransformComponent(std::string& name);
+
+	/* Adds a new SquareColliderComponent to the entity with the specified name
+	*/
+	void AddSquareCollisionComponent(std::string& name, double x, double y, double w, double h);
 
 	/* Loads and returns a texture at file path specified.
 	*/

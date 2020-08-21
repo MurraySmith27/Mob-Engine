@@ -32,14 +32,20 @@ void MOB_Application::AddTransformComponent(std::string& gameObjectName) {
 	m_componentFactory->AddTransformComponent(gameObjectName);
 }
 
+void MOB_Application::AddSquareCollisionComponent(std::string& gameObjectName, double x, double y, double w, double h) {
+	m_componentFactory->AddSquareCollisionComponent(gameObjectName, x, y, w, h);
+}
+
 void MOB_Application::CreateGameObject(std::string& name) {
 	MOB_EntityManager::getEntityManager()->CreateGameObject(name);
 }
+
 
 void MOB_Application::Run() {
 	//Initialize the systems after all components have been added.
 	m_systems.push_back(new MOB_RenderingSystem(m_renderer));
 	m_systems.push_back(new MOB_TransformSystem());
+	m_systems.push_back(new MOB_CollisionSystem());
 
 	RunAllScriptStarts();
 

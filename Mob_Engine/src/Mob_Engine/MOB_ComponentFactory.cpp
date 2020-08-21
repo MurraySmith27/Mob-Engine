@@ -21,6 +21,11 @@ void MOB_ComponentFactory::AddTransformComponent(std::string& name) {
 	MOB_EntityManager::getEntityManager()->FindEntity(name)->AddComponent(component);
 }
 
+void MOB_ComponentFactory::AddSquareCollisionComponent(std::string& name, double x, double y, double w, double h) {
+	MOB_SquareCollisionComponent* component = new MOB_SquareCollisionComponent(x, y, w, h);
+	MOB_EntityManager::getEntityManager()->FindEntity(name)->AddComponent(component);
+}
+
 SDL_Texture* MOB_ComponentFactory::LoadTexture(SDL_Renderer* renderer, std::string& filePath) {
 	SDL_Surface* surface = NULL;
 	SDL_Texture* texture = NULL;

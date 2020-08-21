@@ -5,3 +5,5 @@
 IComponent::~IComponent() {
 
 }
+
+std::string IComponent::componentType;
