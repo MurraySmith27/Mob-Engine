@@ -9,7 +9,7 @@ MOB_CollisionSystem::MOB_CollisionSystem() {
 	std::vector<IEntity*> entities = MOB_EntityManager::getEntityManager()->getEntities();
 
 	for (int i = 0; i < entities.size(); i++) {
-		std::shared_ptr<MOB_CollisionSystem::ComponentTuple> components = std::make_shared<MOB_CollisionSystem::ComponentTuple>();
+		std::shared_ptr<ComponentTuple> components = std::make_shared<ComponentTuple>();
 		components->EntityName = entities[i]->getName();
 		components->Transform = entities[i]->GetComponent<MOB_TransformComponent>();
 		if (components->Transform == NULL) {

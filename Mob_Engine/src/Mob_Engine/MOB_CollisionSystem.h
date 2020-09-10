@@ -27,7 +27,7 @@ private:
 
 	struct ComponentTuple {
 	public:
-		std::string& EntityName;
+		std::string EntityName;
 		MOB_CollisionComponent* Collision;
 		MOB_TransformComponent* Transform;
 		ComponentTuple() : EntityName(std::string()), Collision(NULL), Transform(NULL) {
