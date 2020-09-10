@@ -4,17 +4,38 @@
 #include <iostream>
 
 BasicScript::BasicScript(std::string& entityName) : IScript(entityName){
-
+	transform = MOB_EntityManager::getEntityManager()->FindEntity(m_entityName)->GetComponent<MOB_TransformComponent>();
+	InputManager = MOB_InputManager::GetInputManager();
+	velx = 0;
+	vely = 0;
 }
 
 void BasicScript::FrameUpdate() {
-	transform = MOB_EntityManager::getEntityManager()->FindEntity(m_entityName)->GetComponent<MOB_TransformComponent>();
-	transform->Translate(-1, -1);
+	
+	transform->Translate(velx, vely);
 	transform->RotateBy(10);
+
+	if (InputManager->WasKeyPressed("W")) {
+		vely--;
+	}
+	if (InputManager->WasKeyPressed("A")) {
+		velx--;
+	}
+	if (InputManager->WasKeyPressed("S")) {
+		vely++;
+	}
+	if (InputManager->WasKeyPressed("D")) {
+		velx++;
+	}
+	if (InputManager->WasMousePressed()) {
+		std::cout << "Mouse Pressed!" << std::endl;
+	}
+	if (InputManager->WasMouseReleased()) {
+		std::cout << "Mouse Released!" << std::endl;
+	}
 }
 
 void BasicScript::Start() {
-	transform = MOB_EntityManager::getEntityManager()->FindEntity(m_entityName)->GetComponent<MOB_TransformComponent>();
 	transform->Translate(400, 400);
 }
 

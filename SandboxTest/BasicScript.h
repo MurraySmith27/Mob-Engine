@@ -1,6 +1,7 @@
 #include "Mob_Engine/IScript.h"
 #include <string>
 #include "Mob_Engine/MOB_TransformComponent.h"
+#include "Mob_Engine/MOB_InputManager.h"
 class BasicScript : public IScript
 {
 public:
@@ -16,5 +17,10 @@ public:
 private:
 
 	MOB_TransformComponent* transform;
+
+	MOB_InputManager* InputManager;
+
+	int velx;
+	int vely;
 };
 

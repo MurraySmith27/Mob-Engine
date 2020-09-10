@@ -1,6 +1,7 @@
 #include "MOB_Application.h"
 #include <SDL.h>
 #include <iostream>
+#include "MOB_InputManager.h""
 
 MOB_Application::MOB_Application(std::string windowTitle, int windowWidth, int windowHeight) {
 	SDL_Init(SDL_INIT_EVERYTHING);
@@ -60,11 +61,16 @@ void MOB_Application::Run() {
 	int LastFrameTime = SDL_GetTicks();
 	int ElapsedFrameTime = 0;
 	
+	MOB_InputManager* InputManager = MOB_InputManager::GetInputManager();
+
 	while (running) {
 		
 		if (SDL_PollEvent(&e)) {
 			if (e.type == SDL_QUIT) {
 				running = false;
+			}
+			else if (e.type == SDL_KEYDOWN || e.type == SDL_KEYUP || e.type == SDL_MOUSEBUTTONDOWN || e.type == SDL_MOUSEBUTTONUP){
+				InputManager->ProcessKeyEvent(e);
 			}
 		}
 
@@ -76,6 +82,7 @@ void MOB_Application::Run() {
 			for (int i = 0; i < m_systems.size(); i++) {
 				m_systems[i]->FrameUpdate();
 			}
+			InputManager->ResetInputState();
 			LastFrameTime = SDL_GetTicks();
 		}
 		

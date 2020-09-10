@@ -5,7 +5,7 @@
 #include <string>
 #include "MOB_GameObject.h"
 #include "IEntity.h"
-/* A singleton class 
+/* A singleton class responsible for managing entities.
 */
 class MOB_API MOB_EntityManager
 {
