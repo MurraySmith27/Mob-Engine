@@ -10,6 +10,9 @@ public:
 	void FrameUpdate() override;
 
 	void Start() override;
+
+	void OnCollision(std::string& entity1name, std::string& entity2name) override;
+
 private:
 
 	MOB_TransformComponent* transform;

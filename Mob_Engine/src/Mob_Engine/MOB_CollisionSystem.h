@@ -5,11 +5,13 @@
 #include "MOB_CollisionComponent.h"
 #include "MOB_TransformComponent.h"
 #include "MOB_EntityManager.h"
+#include "IScript.h"
 #include <vector>
 #include <memory>
+
 /* System for handling all collisions. required components to collide: MOB_CollisionComponent (of some kind) and MOB_TransformComponent.
 */
-class MOB_CollisionSystem : public ISystem
+class MOB_API MOB_CollisionSystem : public ISystem
 {
 public:
 
@@ -24,8 +26,13 @@ public:
 private:
 
 	struct ComponentTuple {
-		MOB_CollisionComponent* collision;
-		MOB_TransformComponent* transform;
+	public:
+		std::string& EntityName;
+		MOB_CollisionComponent* Collision;
+		MOB_TransformComponent* Transform;
+		ComponentTuple() : EntityName(std::string()), Collision(NULL), Transform(NULL) {
+
+		};
 	};
 
 	std::vector<std::shared_ptr<ComponentTuple>> m_componentTuples;
@@ -37,7 +44,7 @@ private:
 
 	bool IsColliding(std::shared_ptr<ComponentTuple> entity1, std::shared_ptr<ComponentTuple> entity2);
 
-	void HandleCollisions(std::shared_ptr<ComponentTuple> entity1, std::shared_ptr<ComponentTuple> entity2);
+	void HandleCollisions(std::string& entity1name, std::string& entity2name);
 
 	/* Updates collider positions based on transform component data.
 	*/

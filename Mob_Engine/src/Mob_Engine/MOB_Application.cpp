@@ -1,6 +1,6 @@
 #include "MOB_Application.h"
 #include <SDL.h>
-
+#include <iostream>
 
 MOB_Application::MOB_Application(std::string windowTitle, int windowWidth, int windowHeight) {
 	SDL_Init(SDL_INIT_EVERYTHING);
@@ -24,7 +24,6 @@ MOB_Application::~MOB_Application() {
 }
 
 void MOB_Application::AddRenderingComponent(std::string& gameObjectName, std::string& filePath){
-	//TODO:Components are changing when these functions return, causing their members to be all wack. look into this.
 	m_componentFactory->AddRenderingComponent(m_renderer, gameObjectName, filePath);
 }
 
@@ -42,6 +41,11 @@ void MOB_Application::CreateGameObject(std::string& name) {
 
 
 void MOB_Application::Run() {
+
+	int FrameRate = 60;
+
+	int MaxFrameTime = 1000 / FrameRate;
+
 	//Initialize the systems after all components have been added.
 	m_systems.push_back(new MOB_RenderingSystem(m_renderer));
 	m_systems.push_back(new MOB_TransformSystem());
@@ -52,20 +56,29 @@ void MOB_Application::Run() {
 	SDL_Event e;
 
 	bool running = true;
-	//TODO: Make this iterate once per frame instead of while(true)
+
+	int LastFrameTime = SDL_GetTicks();
+	int ElapsedFrameTime = 0;
+	
 	while (running) {
+		
 		if (SDL_PollEvent(&e)) {
 			if (e.type == SDL_QUIT) {
 				running = false;
 			}
 		}
 
-		
-		RunAllScriptFrameUpdates();
+		ElapsedFrameTime = SDL_GetTicks() - LastFrameTime;
+		if (ElapsedFrameTime > MaxFrameTime) {
 
-		for (int i = 0; i < m_systems.size(); i++) {
-			m_systems[i]->FrameUpdate();
+			RunAllScriptFrameUpdates();
+
+			for (int i = 0; i < m_systems.size(); i++) {
+				m_systems[i]->FrameUpdate();
+			}
+			LastFrameTime = SDL_GetTicks();
 		}
+		
 		
 	}
 }

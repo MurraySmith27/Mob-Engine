@@ -4,7 +4,7 @@
 #include <SDL.h>
 #include <vector>
 #include <tuple>
-class MOB_CollisionComponent : public IComponent
+class MOB_API MOB_CollisionComponent : public IComponent
 {
 public:
 	//Ensure all subclasses of MOB_CollisionComponent call its constructor or assign componentType.

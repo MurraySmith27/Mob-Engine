@@ -20,6 +20,10 @@ public:
 	*/
 	virtual void Start() = 0;
 
+	/* Called on collision between entity1 and entity2 only when one of the two is the entity that has this script attached.
+	*/
+	virtual void OnCollision(std::string& entity1name, std::string& entity2name) = 0;
+
 protected:
 
 	std::string m_entityName;

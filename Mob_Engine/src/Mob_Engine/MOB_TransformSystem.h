@@ -6,7 +6,7 @@
 #include "MOB_EntityManager.h"
 /* Handles transform operations from script/application layer
 */
-class MOB_TransformSystem : public ISystem
+class MOB_API MOB_TransformSystem : public ISystem
 {
 public:
 

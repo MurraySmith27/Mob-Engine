@@ -9,16 +9,17 @@ MOB_CollisionSystem::MOB_CollisionSystem() {
 	std::vector<IEntity*> entities = MOB_EntityManager::getEntityManager()->getEntities();
 
 	for (int i = 0; i < entities.size(); i++) {
-		std::shared_ptr<ComponentTuple> components = std::make_shared<ComponentTuple>();
-		components->transform = entities[i]->GetComponent<MOB_TransformComponent>();
-		if (components->transform == NULL) {
+		std::shared_ptr<MOB_CollisionSystem::ComponentTuple> components = std::make_shared<MOB_CollisionSystem::ComponentTuple>();
+		components->EntityName = entities[i]->getName();
+		components->Transform = entities[i]->GetComponent<MOB_TransformComponent>();
+		if (components->Transform == NULL) {
 			std::cout << "Could not load in transform component for gameobject named: " << entities[i]->getName() << "\n";
 		}
-		components->collision = entities[i]->GetComponent<MOB_CollisionComponent>();
-		if (components->collision == NULL) {
+		components->Collision = entities[i]->GetComponent<MOB_CollisionComponent>();
+		if (components->Collision == NULL) {
 			std::cout << "Could not load in rendering component for gameobject named: " << entities[i]->getName() << "\n";
 		}
-		if (components->transform != NULL && components->collision != NULL) {
+		if (components->Transform != NULL && components->Collision != NULL) {
 			m_componentTuples.push_back(components);
 		}
 	}
@@ -43,7 +44,7 @@ void MOB_CollisionSystem::FrameUpdate() {
 
 	for (int i = 0; i < narrowPhaseCollisions.size(); i++) {
 		if (IsColliding(std::get<0>(narrowPhaseCollisions.at(i)), std::get<1>(narrowPhaseCollisions.at(i)))) {
-			HandleCollisions(std::get<0>(narrowPhaseCollisions.at(i)), std::get<1>(narrowPhaseCollisions.at(i)));
+			HandleCollisions(std::get<0>(narrowPhaseCollisions.at(i))->EntityName, std::get<1>(narrowPhaseCollisions.at(i))->EntityName);
 		}
 	}
 }
@@ -51,8 +52,8 @@ void MOB_CollisionSystem::FrameUpdate() {
 void MOB_CollisionSystem::UpdateColliderPositions() {
 	for (int i = 0; i < m_componentTuples.size(); i++) {
 		//TODO: implement the observer pattern here to wait for a change in position before doing this calculation.
-		std::shared_ptr<ComponentTuple> componentTuple = m_componentTuples.at(i);
-		componentTuple->collision->ChangeColliderPosition(componentTuple->transform->getX(), componentTuple->transform->getY());
+		std::shared_ptr<MOB_CollisionSystem::ComponentTuple> componentTuple = m_componentTuples.at(i);
+		componentTuple->Collision->ChangeColliderPosition(componentTuple->Transform->getX(), componentTuple->Transform->getY());
 	}
 }
 
@@ -69,7 +70,7 @@ std::vector<std::tuple<std::shared_ptr<MOB_CollisionSystem::ComponentTuple>,
 	std::vector<std::tuple<std::shared_ptr<MOB_CollisionSystem::ComponentTuple>, double, double>> XExtremes;
 
 	for (int i = 0; i < m_componentTuples.size(); i++) {
-		vertices = m_componentTuples.at(i)->collision->getVertices();
+		vertices = m_componentTuples.at(i)->Collision->getVertices();
 		//std::get<0> because the first coordinate of the tuple is the x coordinate.
 		double rightmostXVertex = std::get<0>(vertices.at(0));
 		double leftmostXVertex = std::get<0>(vertices.at(0));
@@ -112,16 +113,16 @@ bool MOB_CollisionSystem::IsColliding(std::shared_ptr<MOB_CollisionSystem::Compo
 
 	//Performing narrow phase collision detection using Seperating-axis theorem. TODO: Check your math here.
 
-	std::vector<std::tuple<double, double>> dirVectors = entity1->collision->getDirectionVectorsToProject(entity1->transform->getAngle());
+	std::vector<std::tuple<double, double>> dirVectors = entity1->Collision->getDirectionVectorsToProject(entity1->Transform->getAngle());
 
-	std::vector<std::tuple<double, double>> moreDirVectors = entity2->collision->getDirectionVectorsToProject(entity2->transform->getAngle());
+	std::vector<std::tuple<double, double>> moreDirVectors = entity2->Collision->getDirectionVectorsToProject(entity2->Transform->getAngle());
 	
 	for (int i = 0; i < moreDirVectors.size(); i++) {
 		dirVectors.push_back(moreDirVectors.at(i));
 	}
 
-	std::vector<std::tuple<double, double>> entity1Vertices = entity1->collision->getVertices();
-	std::vector<std::tuple<double, double>> entity2Vertices = entity2->collision->getVertices();
+	std::vector<std::tuple<double, double>> entity1Vertices = entity1->Collision->getVertices();
+	std::vector<std::tuple<double, double>> entity2Vertices = entity2->Collision->getVertices();
 
 	std::tuple<double, double> normal;
 	for (int i = 0; i < dirVectors.size(); i++) {
@@ -177,8 +178,21 @@ bool MOB_CollisionSystem::IsColliding(std::shared_ptr<MOB_CollisionSystem::Compo
 	return true;
 }
 
-void MOB_CollisionSystem::HandleCollisions(std::shared_ptr<ComponentTuple> entity1, std::shared_ptr<ComponentTuple> entity2) {
-	std::cout << "Collision occured!" << "\n";
+void MOB_CollisionSystem::HandleCollisions(std::string& entity1name, std::string& entity2name) {
+	
+
+	IEntity* Entity1 = MOB_EntityManager::getEntityManager()->FindEntity(entity1name);
+	IEntity* Entity2 = MOB_EntityManager::getEntityManager()->FindEntity(entity2name);
+
+	std::vector<IScript*> E1Scripts = Entity1->getScripts();
+	for (int i = 0; i < E1Scripts.size(); i++) {
+		E1Scripts[i]->OnCollision(entity1name, entity2name);
+	}
+
+	std::vector<IScript*> E2Scripts = Entity2->getScripts();
+	for (int i = 0; i < E2Scripts.size(); i++) {
+		E2Scripts[i]->OnCollision(entity1name, entity2name);
+	}
 }
 
 std::tuple<double, double> MOB_CollisionSystem::VectorComponent(std::tuple<double, double> projectOnto, std::tuple<double, double> vectorToProject) {

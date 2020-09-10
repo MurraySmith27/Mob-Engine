@@ -3,7 +3,7 @@
 #include "MOB_CollisionComponent.h"
 #include <vector>
 #include <tuple>
-class MOB_SquareCollisionComponent : public MOB_CollisionComponent
+class MOB_API MOB_SquareCollisionComponent : public MOB_CollisionComponent
 {
 public: 
 

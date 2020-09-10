@@ -18,6 +18,7 @@ public:
 
 	~MOB_ComponentFactory();
 
+
 	/* Adds a new RenderingComponent to the Entity with the specified name, and a texture loaded from filePath.
 	*/
 	void AddRenderingComponent(SDL_Renderer* renderer, std::string& name, std::string& filePath);
