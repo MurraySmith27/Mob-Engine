@@ -70,7 +70,7 @@ std::vector<std::tuple<std::shared_ptr<MOB_CollisionSystem::ComponentTuple>,
 	std::vector<std::tuple<std::shared_ptr<MOB_CollisionSystem::ComponentTuple>, double, double>> XExtremes;
 
 	for (int i = 0; i < m_componentTuples.size(); i++) {
-		vertices = m_componentTuples.at(i)->Collision->getVertices();
+		vertices = m_componentTuples.at(i)->Collision->GetVertices(m_componentTuples.at(i)->Transform->getAngle());
 		//std::get<0> because the first coordinate of the tuple is the x coordinate.
 		double rightmostXVertex = std::get<0>(vertices.at(0));
 		double leftmostXVertex = std::get<0>(vertices.at(0));
@@ -109,7 +109,7 @@ std::vector<std::tuple<std::shared_ptr<MOB_CollisionSystem::ComponentTuple>,
 
 
 bool MOB_CollisionSystem::IsColliding(std::shared_ptr<MOB_CollisionSystem::ComponentTuple> entity1,
-	std::shared_ptr<MOB_CollisionSystem::ComponentTuple> entity2) {
+ 	std::shared_ptr<MOB_CollisionSystem::ComponentTuple> entity2) {
 
 	//Performing narrow phase collision detection using Seperating-axis theorem. TODO: Check your math here.
 
@@ -121,8 +121,8 @@ bool MOB_CollisionSystem::IsColliding(std::shared_ptr<MOB_CollisionSystem::Compo
 		dirVectors.push_back(moreDirVectors.at(i));
 	}
 
-	std::vector<std::tuple<double, double>> entity1Vertices = entity1->Collision->getVertices();
-	std::vector<std::tuple<double, double>> entity2Vertices = entity2->Collision->getVertices();
+	std::vector<std::tuple<double, double>> entity1Vertices = entity1->Collision->GetVertices(entity1->Transform->getAngle());
+	std::vector<std::tuple<double, double>> entity2Vertices = entity2->Collision->GetVertices(entity2->Transform->getAngle());
 
 	std::tuple<double, double> normal;
 	for (int i = 0; i < dirVectors.size(); i++) {
@@ -150,8 +150,8 @@ bool MOB_CollisionSystem::IsColliding(std::shared_ptr<MOB_CollisionSystem::Compo
 			}
 		}
 
-		std::tuple<double, double> entity2MostNegativeProjectionOntoNormal = VectorComponent(normal, entity1Vertices.at(0));
-		std::tuple<double, double> entity2MostPositiveProjectionOntoNormal = VectorComponent(normal, entity1Vertices.at(0));
+		std::tuple<double, double> entity2MostNegativeProjectionOntoNormal = VectorComponent(normal, entity2Vertices.at(0));
+		std::tuple<double, double> entity2MostPositiveProjectionOntoNormal = VectorComponent(normal, entity2Vertices.at(0));
 
 
 		for (int j = 1; j < entity2Vertices.size(); j++) {

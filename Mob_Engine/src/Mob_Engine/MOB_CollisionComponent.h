@@ -18,7 +18,7 @@ public:
 
 	/* Return all vertexes of the collider
 	*/
-	virtual std::vector<std::tuple<double, double>> getVertices() = 0;
+	virtual std::vector<std::tuple<double, double>> GetVertices(double angle = 0.0) = 0;
 
 	/* Moves all collider vertexes to position (x, y)
 	*/

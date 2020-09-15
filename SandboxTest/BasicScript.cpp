@@ -13,7 +13,7 @@ BasicScript::BasicScript(std::string& entityName) : IScript(entityName){
 void BasicScript::FrameUpdate() {
 	
 	transform->Translate(velx, vely);
-	transform->RotateBy(10);
+	std::cout << "(" << transform->getX() << ", " << transform->getY() << ")" << std::endl;
 
 	if (InputManager->WasKeyPressed("W")) {
 		vely--;
@@ -37,6 +37,7 @@ void BasicScript::FrameUpdate() {
 
 void BasicScript::Start() {
 	transform->Translate(400, 400);
+	transform->RotateBy(45);
 }
 
 void BasicScript::OnCollision(std::string& entity1name, std::string& entity2name) {

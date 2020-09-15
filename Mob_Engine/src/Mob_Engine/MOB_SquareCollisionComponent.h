@@ -13,7 +13,7 @@ public:
 
 	void ChangeColliderPosition(double x, double y) override;
 
-	std::vector<std::tuple<double, double>> getVertices() override;
+	std::vector<std::tuple<double, double>> GetVertices(double angle = 0.0) override;
 
 	std::vector<std::tuple<double, double>> getDirectionVectorsToProject(double angleOfRotation) override;
 
