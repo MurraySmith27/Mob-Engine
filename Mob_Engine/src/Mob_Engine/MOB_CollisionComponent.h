@@ -4,6 +4,7 @@
 #include <SDL.h>
 #include <vector>
 #include <tuple>
+#include "MOB_Vector.h"
 class MOB_API MOB_CollisionComponent : public IComponent
 {
 public:
@@ -14,11 +15,11 @@ public:
 	
 	/* Return a list of tuples representing direction vectors to project from when calculating the SAT collision.
 	*/
-	virtual std::vector<std::tuple<double, double>> getDirectionVectorsToProject(double angleOfRotation) = 0;
+	virtual std::vector<MOB_Vector> getDirectionVectorsToProject(double angleOfRotation) = 0;
 
 	/* Return all vertexes of the collider
 	*/
-	virtual std::vector<std::tuple<double, double>> GetVertices(double angle = 0.0) = 0;
+	virtual std::vector<MOB_Vector> GetVertices(double angle = 0.0) = 0;
 
 	/* Moves all collider vertexes to position (x, y)
 	*/
@@ -28,7 +29,7 @@ public:
 
 protected:
 
-	std::vector<std::tuple<double, double>> m_colliderVertexes;
+	std::vector<MOB_Vector> m_colliderVertexes;
 	
 };
 #endif

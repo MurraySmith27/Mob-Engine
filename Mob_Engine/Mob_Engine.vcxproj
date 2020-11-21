@@ -190,6 +190,7 @@
     <ClInclude Include="Libraries\SDL2-2.0.12\include\SDL_vulkan.h" />
     <ClInclude Include="Libraries\SDL2-2.0.12\include\begin_code.h" />
     <ClInclude Include="Libraries\SDL2-2.0.12\include\close_code.h" />
+    <ClInclude Include="src\Mob_Engine\MOB_Vector.h" />
     <ClInclude Include="src\Mob_Engine\MOB_InputManager.h" />
     <ClInclude Include="src\Mob_Engine\MOB_SquareCollisionComponent.h" />
     <ClInclude Include="src\Mob_Engine\MOB_CollisionComponent.h" />
@@ -212,6 +213,7 @@
     <ClInclude Include="src\Mob_Engine\MOB_TransformSystem.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Mob_Engine\MOB_Vector.cpp" />
     <ClCompile Include="src\Mob_Engine\MOB_InputManager.cpp" />
     <ClCompile Include="src\Mob_Engine\MOB_SquareCollisionComponent.cpp" />
     <ClCompile Include="src\Mob_Engine\MOB_CollisionComponent.cpp" />

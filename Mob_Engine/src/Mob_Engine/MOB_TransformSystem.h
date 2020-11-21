@@ -26,11 +26,11 @@ public:
 	*/
 	void Stretch(std::string& gameObjectName, int w = -1, int h = -1);
 
-	/* Rotates the entity's position by angle degrees.
+	/* Rotates the entity's position by angle radians.
 	*/
 	void RotateBy(std::string& gameObjectName, double angle);
 
-	/* Sets the rotatio of the entity to angle degrees clockwise.
+	/* Sets the rotatio of the entity to angle radians clockwise.
 	*/
 	void SetRotation(std::string& gameObjectName, double angle);
 

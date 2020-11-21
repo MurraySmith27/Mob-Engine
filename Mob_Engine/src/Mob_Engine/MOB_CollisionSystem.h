@@ -49,13 +49,6 @@ private:
 	/* Updates collider positions based on transform component data.
 	*/
 	void UpdateColliderPositions();
-
-	std::tuple<double, double> VectorComponent(std::tuple<double, double> projectOnto, 
-		std::tuple<double, double> vectorToProject);
-
-	/* Return the signed magnitude of vector
-	*/
-	double VectorMagnitude(std::tuple<double, double> vector);
 };
 #endif
 

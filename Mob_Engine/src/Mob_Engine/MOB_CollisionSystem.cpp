@@ -64,7 +64,7 @@ std::vector<std::tuple<std::shared_ptr<MOB_CollisionSystem::ComponentTuple>,
 	std::vector<std::tuple<std::shared_ptr<MOB_CollisionSystem::ComponentTuple>,
 		std::shared_ptr<MOB_CollisionSystem::ComponentTuple>>> narrowPhaseCollisionTuples;
 
-	std::vector<std::tuple<double, double>> vertices;
+	std::vector<MOB_Vector> vertices;
 	// XExtremes stores a list of all collision components, and their corresponding leftmost and rightmost coordinates when the vertices
 	// are projected onto the x-axis, in that order. 
 	std::vector<std::tuple<std::shared_ptr<MOB_CollisionSystem::ComponentTuple>, double, double>> XExtremes;
@@ -72,15 +72,15 @@ std::vector<std::tuple<std::shared_ptr<MOB_CollisionSystem::ComponentTuple>,
 	for (int i = 0; i < m_componentTuples.size(); i++) {
 		vertices = m_componentTuples.at(i)->Collision->GetVertices(m_componentTuples.at(i)->Transform->getAngle());
 		//std::get<0> because the first coordinate of the tuple is the x coordinate.
-		double rightmostXVertex = std::get<0>(vertices.at(0));
-		double leftmostXVertex = std::get<0>(vertices.at(0));
+		double rightmostXVertex = vertices.at(0).getX();
+		double leftmostXVertex = vertices.at(0).getX();
 		//Assuming that a collider has more than one vertex (a fair assumption)
 		for (int j = 1; j < vertices.size(); j++) {
-			if (std::get<0>(vertices.at(j)) < leftmostXVertex) {
-				leftmostXVertex = std::get<0>(vertices.at(j));
+			if (vertices.at(j).getX() < leftmostXVertex) {
+				leftmostXVertex = vertices.at(j).getX();
 			}
-			else if (std::get<0>(vertices.at(j)) > rightmostXVertex) {
-				rightmostXVertex = std::get<0>(vertices.at(j));
+			else if (vertices.at(j).getX() > rightmostXVertex) {
+				rightmostXVertex = vertices.at(j).getX();
 			}
 		}
 		XExtremes.push_back(std::make_tuple(m_componentTuples.at(i), leftmostXVertex, rightmostXVertex));
@@ -113,61 +113,61 @@ bool MOB_CollisionSystem::IsColliding(std::shared_ptr<MOB_CollisionSystem::Compo
 
 	//Performing narrow phase collision detection using Seperating-axis theorem. TODO: Check your math here.
 
-	std::vector<std::tuple<double, double>> dirVectors = entity1->Collision->getDirectionVectorsToProject(entity1->Transform->getAngle());
+	std::vector<MOB_Vector> dirVectors = entity1->Collision->getDirectionVectorsToProject(entity1->Transform->getAngle());
 
-	std::vector<std::tuple<double, double>> moreDirVectors = entity2->Collision->getDirectionVectorsToProject(entity2->Transform->getAngle());
+	std::vector<MOB_Vector> moreDirVectors = entity2->Collision->getDirectionVectorsToProject(entity2->Transform->getAngle());
 	
 	for (int i = 0; i < moreDirVectors.size(); i++) {
 		dirVectors.push_back(moreDirVectors.at(i));
 	}
 
-	std::vector<std::tuple<double, double>> entity1Vertices = entity1->Collision->GetVertices(entity1->Transform->getAngle());
-	std::vector<std::tuple<double, double>> entity2Vertices = entity2->Collision->GetVertices(entity2->Transform->getAngle());
+	std::vector<MOB_Vector> entity1Vertices = entity1->Collision->GetVertices(entity1->Transform->getAngle());
+	std::vector<MOB_Vector> entity2Vertices = entity2->Collision->GetVertices(entity2->Transform->getAngle());
 
-	std::tuple<double, double> normal;
+	MOB_Vector normal;
 	for (int i = 0; i < dirVectors.size(); i++) {
-		if (std::get<1>(dirVectors.at(i)) > 0) {
-			normal = std::make_tuple(std::get<1>(dirVectors.at(i)), -std::get<0>(dirVectors.at(i)));
+		if (dirVectors.at(i).getX() > 0) {
+			normal = MOB_Vector(dirVectors.at(i).getY(), -dirVectors.at(i).getX());
 		}
-		else if (std::get<1>(dirVectors.at(i)) < 0) {
-			normal = std::make_tuple(-std::get<1>(dirVectors.at(i)), std::get<0>(dirVectors.at(i)));
+		else if (dirVectors.at(i).getY() < 0) {
+			normal = MOB_Vector(-dirVectors.at(i).getY(), dirVectors.at(i).getX());
 		}
 		else {
-			normal = std::make_tuple(0.0, 1.0);
+			normal = MOB_Vector(0.0, 1.0);
 		}
 		
-		std::tuple<double, double> entity1MostNegativeProjectionOntoNormal = VectorComponent(normal, entity1Vertices.at(0));
-		std::tuple<double, double> entity1MostPositiveProjectionOntoNormal = VectorComponent(normal, entity1Vertices.at(0));
+		MOB_Vector entity1MostNegativeProjectionOntoNormal = MOB_Vector::ProjectOnto(normal, entity1Vertices.at(0));
+		MOB_Vector entity1MostPositiveProjectionOntoNormal = MOB_Vector::ProjectOnto(normal, entity1Vertices.at(0));
 
 		//Once again assuming all entities have at least two vertices.
 		for (int j = 1; j < entity1Vertices.size(); j++) {
-			std::tuple<double, double> vertexNormalProjection = VectorComponent(normal, entity1Vertices.at(j));
-			if (VectorMagnitude(vertexNormalProjection) < VectorMagnitude(entity1MostNegativeProjectionOntoNormal)) {
+			MOB_Vector vertexNormalProjection = MOB_Vector::ProjectOnto(normal, entity1Vertices.at(j));
+			if (vertexNormalProjection.getMagnitude() < entity1MostNegativeProjectionOntoNormal.getMagnitude()) {
 				entity1MostNegativeProjectionOntoNormal = vertexNormalProjection;
 			}
-			else if (VectorMagnitude(vertexNormalProjection) > VectorMagnitude(entity1MostPositiveProjectionOntoNormal)) {
+			else if (vertexNormalProjection.getMagnitude() > entity1MostPositiveProjectionOntoNormal.getMagnitude()) {
 				entity1MostPositiveProjectionOntoNormal = vertexNormalProjection;
 			}
 		}
 
-		std::tuple<double, double> entity2MostNegativeProjectionOntoNormal = VectorComponent(normal, entity2Vertices.at(0));
-		std::tuple<double, double> entity2MostPositiveProjectionOntoNormal = VectorComponent(normal, entity2Vertices.at(0));
+		MOB_Vector entity2MostNegativeProjectionOntoNormal = MOB_Vector::ProjectOnto(normal, entity2Vertices.at(0));
+		MOB_Vector entity2MostPositiveProjectionOntoNormal = MOB_Vector::ProjectOnto(normal, entity2Vertices.at(0));
 
 
 		for (int j = 1; j < entity2Vertices.size(); j++) {
-			std::tuple<double, double> vertexNormalProjection = VectorComponent(normal, entity2Vertices.at(j));
-			if (VectorMagnitude(vertexNormalProjection) < VectorMagnitude(entity2MostNegativeProjectionOntoNormal)) {
+			MOB_Vector vertexNormalProjection = MOB_Vector::ProjectOnto(normal, entity2Vertices.at(j));
+			if (vertexNormalProjection.getMagnitude() < entity2MostNegativeProjectionOntoNormal.getMagnitude()) {
 				entity2MostNegativeProjectionOntoNormal = vertexNormalProjection;
 			}
-			else if (VectorMagnitude(vertexNormalProjection) > VectorMagnitude(entity2MostPositiveProjectionOntoNormal)) {
+			else if (vertexNormalProjection.getMagnitude() > entity2MostPositiveProjectionOntoNormal.getMagnitude()) {
 				entity2MostPositiveProjectionOntoNormal = vertexNormalProjection;
 			}
 		}
 
-		if (!((VectorMagnitude(entity1MostNegativeProjectionOntoNormal) <= VectorMagnitude(entity2MostNegativeProjectionOntoNormal) && 
-			VectorMagnitude(entity2MostNegativeProjectionOntoNormal) <= VectorMagnitude(entity1MostPositiveProjectionOntoNormal)) || 
-			(VectorMagnitude(entity1MostNegativeProjectionOntoNormal) <= VectorMagnitude(entity2MostPositiveProjectionOntoNormal) &&
-				VectorMagnitude(entity2MostPositiveProjectionOntoNormal) <= VectorMagnitude(entity1MostPositiveProjectionOntoNormal)))){
+		if (!((entity1MostNegativeProjectionOntoNormal.getMagnitude() <= entity2MostNegativeProjectionOntoNormal.getMagnitude() && 
+			   entity2MostNegativeProjectionOntoNormal.getMagnitude() <= entity1MostPositiveProjectionOntoNormal.getMagnitude()) || 
+			(entity1MostNegativeProjectionOntoNormal.getMagnitude() <= entity2MostPositiveProjectionOntoNormal.getMagnitude() &&
+			 entity2MostPositiveProjectionOntoNormal.getMagnitude() <= entity1MostPositiveProjectionOntoNormal.getMagnitude()))){
 			return false;
 		}
 
@@ -195,36 +195,24 @@ void MOB_CollisionSystem::HandleCollisions(std::string& entity1name, std::string
 	}
 }
 
-std::tuple<double, double> MOB_CollisionSystem::VectorComponent(std::tuple<double, double> projectOnto, std::tuple<double, double> vectorToProject) {
-	
-	double projectOntoMagnitude = std::abs(VectorMagnitude(projectOnto));
-
-	double dotProduct = (std::get<0>(projectOnto) * std::get<0>(vectorToProject)) + 
-		(std::get<1>(projectOnto) * std::get<1>(vectorToProject));
-
-	double scalarMultiple = dotProduct / std::pow(projectOntoMagnitude, 2);
-	//The below *probably* works
-	return std::make_tuple(scalarMultiple * std::get<0>(projectOnto), scalarMultiple * std::get<1>(projectOnto));
-}
-
-double MOB_CollisionSystem::VectorMagnitude(std::tuple<double, double> vector) {
-	//mag is a positive value.
-	double mag = std::sqrt(std::pow(std::get<0>(vector), 2) + std::pow(std::get<1>(vector), 2));
-	if (std::get<1>(vector) == 0) {
-		//the vector is vertical
-		if (std::get<0>(vector) >= 0) {
-			return mag;
-		}
-		else {
-			return -mag;
-		}
-	}
-	else if (std::get<0>(vector) < 0) {
-		return -mag;
-	}
-	else {
-		return mag;
-	}
-	
-}
+//double MOB_CollisionSystem::VectorMagnitude(std::tuple<double, double> vector) {
+//	//mag is a positive value.
+//	double mag = std::sqrt(std::pow(std::get<0>(vector), 2) + std::pow(std::get<1>(vector), 2));
+//	if (std::get<1>(vector) == 0) {
+//		//the vector is vertical
+//		if (std::get<0>(vector) >= 0) {
+//			return mag;
+//		}
+//		else {
+//			return -mag;
+//		}
+//	}
+//	else if (std::get<0>(vector) < 0) {
+//		return -mag;
+//	}
+//	else {
+//		return mag;
+//	}
+//	
+//}
 
