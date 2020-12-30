@@ -29,7 +29,7 @@ public:
 
 	/* Adds a new SquareColliderComponent to the entity with the specified name
 	*/
-	void AddSquareCollisionComponent(std::string& name, double x, double y, double w, double h);
+	void AddSquareCollisionComponent(std::string& name);
 
 	/* Loads and returns a texture at file path specified.
 	*/

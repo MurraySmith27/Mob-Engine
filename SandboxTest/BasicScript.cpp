@@ -37,8 +37,9 @@ void BasicScript::FrameUpdate() {
 
 void BasicScript::Start() {
 	transform->Translate(400, 400);
-	transform->RotateBy(45);
 	transform->Stretch(100, 100);
+	transform->RotateBy(45);
+	
 }
 
 void BasicScript::OnCollision(std::string& entity1name, std::string& entity2name) {

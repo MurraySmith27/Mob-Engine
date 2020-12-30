@@ -24,6 +24,10 @@ public:
 	*/
 	static double Distance(MOB_Vector vector1, MOB_Vector vector2);
 
+	/* Computes a unit vector that is normal to vector.
+	*/
+	static MOB_Vector UnitNormal(MOB_Vector vector);
+
 	/* Return a unit vector in the direction of (x, y)
 	*/
 	static MOB_Vector Unit(double x, double y);
@@ -44,6 +48,10 @@ public:
 	/* Return the angle between vector1 and vector2 in radians.
 	*/
 	static double AngleBetween(MOB_Vector vector1, MOB_Vector vector2);
+
+	/* Return the signed magnitude where positive is positive x and negative is negative x.
+	*/
+	double getSignedMagnitude();
 
 	//Overriding operators
 

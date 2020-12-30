@@ -17,11 +17,21 @@ void MOB_ComponentFactory::AddRenderingComponent(SDL_Renderer* renderer, std::st
 }
 
 void MOB_ComponentFactory::AddTransformComponent(std::string& name) {
-	MOB_TransformComponent* component = new MOB_TransformComponent();
+	MOB_RenderingComponent* rendering = MOB_EntityManager::getEntityManager()->FindEntity(name)->GetComponent<MOB_RenderingComponent>();
+	int x = rendering->getX();
+	int y = rendering->getY();
+	int w = rendering->getW();
+	int h = rendering->getH();
+	MOB_TransformComponent* component = new MOB_TransformComponent(x, y, w, h);
 	MOB_EntityManager::getEntityManager()->FindEntity(name)->AddComponent(component);
 }
 
-void MOB_ComponentFactory::AddSquareCollisionComponent(std::string& name, double x, double y, double w, double h) {
+void MOB_ComponentFactory::AddSquareCollisionComponent(std::string& name) {
+	MOB_RenderingComponent* rendering = MOB_EntityManager::getEntityManager()->FindEntity(name)->GetComponent<MOB_RenderingComponent>();
+	int x = rendering->getX();
+	int y = rendering->getY();
+	int w = rendering->getW();
+	int h = rendering->getH();
 	MOB_SquareCollisionComponent* component = new MOB_SquareCollisionComponent(x, y, w, h);
 	MOB_EntityManager::getEntityManager()->FindEntity(name)->AddComponent(component);
 }

@@ -9,7 +9,7 @@ class MOB_API MOB_TransformComponent : public IComponent
 {
 public:
 
-	MOB_TransformComponent();
+	MOB_TransformComponent(int x, int y, int w, int h);
 
 	~MOB_TransformComponent();
 

@@ -12,13 +12,13 @@ int main(int argc, char** argv) {
 	app->CreateGameObject(goName);
 	app->AddRenderingComponent(goName, spriteDir + "BlacksmithMainPose.png");
 	app->AddTransformComponent(goName);
-	app->AddSquareCollisionComponent(goName, 0, 0, 14, 19);
+	app->AddSquareCollisionComponent(goName);
 
 	std::string goName2 = "test2";
 	app->CreateGameObject(goName2);
 	app->AddRenderingComponent(goName2, spriteDir + "BlacksmithMainPose.png");
 	app->AddTransformComponent(goName2);
-	app->AddSquareCollisionComponent(goName2, 0, 0, 14, 19);
+	app->AddSquareCollisionComponent(goName2);
 	
 	BasicScript* my_script = new BasicScript(goName);
 

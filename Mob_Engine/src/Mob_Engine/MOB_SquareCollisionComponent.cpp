@@ -14,6 +14,7 @@ MOB_SquareCollisionComponent::~MOB_SquareCollisionComponent() {
 }
 
 std::vector<MOB_Vector> MOB_SquareCollisionComponent::GetVertices(double angle) {
+	angle = angle * M_PI / 180;
 	if (angle == 0.0 || angle == M_PI / 2 || angle == M_PI || angle == 3 * M_PI / 2) {
 		return m_colliderVertexes;
 	}
@@ -23,7 +24,6 @@ std::vector<MOB_Vector> MOB_SquareCollisionComponent::GetVertices(double angle) 
 		}
 		//first, we translate the square so the center is at the origin, then compute the rotation, then translate back.
 
-		//PROBLEM: TREATING THIS LIKE A SQUARE
 
 		double Width = m_colliderVertexes.at(1).getX() - m_colliderVertexes.at(0).getX();
 		double Height = m_colliderVertexes.at(2).getY() - m_colliderVertexes.at(0).getY();
@@ -58,10 +58,12 @@ std::vector<MOB_Vector> MOB_SquareCollisionComponent::GetVertices(double angle) 
 	}
 }
 
-void MOB_SquareCollisionComponent::ChangeColliderPosition(double x, double y) {
+void MOB_SquareCollisionComponent::ChangeColliderPosition(MOB_TransformComponent* transform) {
 	//This works because the angle of rotation is applied at calculation time, and not associated with the square collision component
-	double w = m_colliderVertexes.at(1).getX() - m_colliderVertexes.at(0).getX();
-	double h = m_colliderVertexes.at(2).getY() - m_colliderVertexes.at(0).getY();
+	double x = transform->getX();
+	double y = transform->getY();
+	double w = transform->getW();
+	double h = transform->getH();
 	m_colliderVertexes.at(0) = MOB_Vector(x, y);
 	m_colliderVertexes.at(1) = MOB_Vector(x + w, y);
 	m_colliderVertexes.at(2) = MOB_Vector(x, y + h);
@@ -70,7 +72,7 @@ void MOB_SquareCollisionComponent::ChangeColliderPosition(double x, double y) {
 
 std::vector<MOB_Vector> MOB_SquareCollisionComponent::getDirectionVectorsToProject(double angleOfRotation) {
 	std::vector<MOB_Vector> directionVectorsToProject;
-
+	angleOfRotation = angleOfRotation * M_PI / 180;
 	if (angleOfRotation == 0.0 || angleOfRotation == M_PI / 2 || angleOfRotation == M_PI || angleOfRotation == 3 * M_PI / 2) {
 		directionVectorsToProject.push_back(MOB_Vector(1.0, 0.0));
 		directionVectorsToProject.push_back(MOB_Vector(0.0, 1.0));
@@ -84,7 +86,7 @@ std::vector<MOB_Vector> MOB_SquareCollisionComponent::getDirectionVectorsToProje
 	}
 	
 	double firstDirectionVectorX = cos(angleOfRotation);
-	double firstDirectionVectorY = -sin(angleOfRotation);
+	double firstDirectionVectorY = sin(angleOfRotation);
 
 	//TODO: finish this and check your math
 	directionVectorsToProject.push_back(MOB_Vector(firstDirectionVectorX, firstDirectionVectorY));

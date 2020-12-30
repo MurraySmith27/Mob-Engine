@@ -16,6 +16,14 @@ public:
 
 	~MOB_RenderingComponent();
 
+	int getX();
+
+	int getY();
+
+	int getW();
+	
+	int getH();
+
 	/* The drawable associated with the component.
 	*/
 	IDrawable drawable;

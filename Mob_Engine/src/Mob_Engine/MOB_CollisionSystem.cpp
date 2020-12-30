@@ -53,7 +53,7 @@ void MOB_CollisionSystem::UpdateColliderPositions() {
 	for (int i = 0; i < m_componentTuples.size(); i++) {
 		//TODO: implement the observer pattern here to wait for a change in position before doing this calculation.
 		std::shared_ptr<MOB_CollisionSystem::ComponentTuple> componentTuple = m_componentTuples.at(i);
-		componentTuple->Collision->ChangeColliderPosition(componentTuple->Transform->getX(), componentTuple->Transform->getY());
+		componentTuple->Collision->ChangeColliderPosition(componentTuple->Transform);
 	}
 }
 
@@ -126,15 +126,8 @@ bool MOB_CollisionSystem::IsColliding(std::shared_ptr<MOB_CollisionSystem::Compo
 
 	MOB_Vector normal;
 	for (int i = 0; i < dirVectors.size(); i++) {
-		if (dirVectors.at(i).getX() > 0) {
-			normal = MOB_Vector(dirVectors.at(i).getY(), -dirVectors.at(i).getX());
-		}
-		else if (dirVectors.at(i).getY() < 0) {
-			normal = MOB_Vector(-dirVectors.at(i).getY(), dirVectors.at(i).getX());
-		}
-		else {
-			normal = MOB_Vector(0.0, 1.0);
-		}
+		
+		normal = MOB_Vector::UnitNormal(dirVectors.at(i));
 		
 		MOB_Vector entity1MostNegativeProjectionOntoNormal = MOB_Vector::ProjectOnto(normal, entity1Vertices.at(0));
 		MOB_Vector entity1MostPositiveProjectionOntoNormal = MOB_Vector::ProjectOnto(normal, entity1Vertices.at(0));
@@ -142,10 +135,10 @@ bool MOB_CollisionSystem::IsColliding(std::shared_ptr<MOB_CollisionSystem::Compo
 		//Once again assuming all entities have at least two vertices.
 		for (int j = 1; j < entity1Vertices.size(); j++) {
 			MOB_Vector vertexNormalProjection = MOB_Vector::ProjectOnto(normal, entity1Vertices.at(j));
-			if (vertexNormalProjection.getMagnitude() < entity1MostNegativeProjectionOntoNormal.getMagnitude()) {
+			if (vertexNormalProjection.getSignedMagnitude() < entity1MostNegativeProjectionOntoNormal.getSignedMagnitude()) {
 				entity1MostNegativeProjectionOntoNormal = vertexNormalProjection;
 			}
-			else if (vertexNormalProjection.getMagnitude() > entity1MostPositiveProjectionOntoNormal.getMagnitude()) {
+			else if (vertexNormalProjection.getSignedMagnitude() > entity1MostPositiveProjectionOntoNormal.getSignedMagnitude()) {
 				entity1MostPositiveProjectionOntoNormal = vertexNormalProjection;
 			}
 		}
@@ -156,18 +149,18 @@ bool MOB_CollisionSystem::IsColliding(std::shared_ptr<MOB_CollisionSystem::Compo
 
 		for (int j = 1; j < entity2Vertices.size(); j++) {
 			MOB_Vector vertexNormalProjection = MOB_Vector::ProjectOnto(normal, entity2Vertices.at(j));
-			if (vertexNormalProjection.getMagnitude() < entity2MostNegativeProjectionOntoNormal.getMagnitude()) {
+			if (vertexNormalProjection.getSignedMagnitude() < entity2MostNegativeProjectionOntoNormal.getSignedMagnitude()) {
 				entity2MostNegativeProjectionOntoNormal = vertexNormalProjection;
 			}
-			else if (vertexNormalProjection.getMagnitude() > entity2MostPositiveProjectionOntoNormal.getMagnitude()) {
+			else if (vertexNormalProjection.getSignedMagnitude() > entity2MostPositiveProjectionOntoNormal.getSignedMagnitude()) {
 				entity2MostPositiveProjectionOntoNormal = vertexNormalProjection;
 			}
 		}
 
-		if (!((entity1MostNegativeProjectionOntoNormal.getMagnitude() <= entity2MostNegativeProjectionOntoNormal.getMagnitude() && 
-			   entity2MostNegativeProjectionOntoNormal.getMagnitude() <= entity1MostPositiveProjectionOntoNormal.getMagnitude()) || 
-			(entity1MostNegativeProjectionOntoNormal.getMagnitude() <= entity2MostPositiveProjectionOntoNormal.getMagnitude() &&
-			 entity2MostPositiveProjectionOntoNormal.getMagnitude() <= entity1MostPositiveProjectionOntoNormal.getMagnitude()))){
+		if (entity1MostNegativeProjectionOntoNormal.getSignedMagnitude() > entity2MostPositiveProjectionOntoNormal.getSignedMagnitude()) {
+			return false;
+		}
+		else if (entity1MostPositiveProjectionOntoNormal.getSignedMagnitude() < entity2MostNegativeProjectionOntoNormal.getSignedMagnitude()) {
 			return false;
 		}
 

@@ -1,8 +1,12 @@
 #include "MOB_TransformComponent.h"
 
 
-MOB_TransformComponent::MOB_TransformComponent(){
-	componentType = "transform";
+MOB_TransformComponent::MOB_TransformComponent(int x, int y, int w, int h){
+	m_positionRect.x = x;
+	m_positionRect.y = y;
+	m_positionRect.w = w;
+	m_positionRect.h = h;
+ 	componentType = "transform";
 }
 
 //Make sure not to delete the Game Object from here, as it will cause deallocation errors.
@@ -41,7 +45,7 @@ void MOB_TransformComponent::Stretch(int w, int h) {
 	if (w != -1) {
 		m_positionRect.w = w;
 	}
-	else if (h != -1) {
+	if (h != -1) {
 		m_positionRect.h = h;
 	}
 }

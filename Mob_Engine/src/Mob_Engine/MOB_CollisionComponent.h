@@ -5,6 +5,7 @@
 #include <vector>
 #include <tuple>
 #include "MOB_Vector.h"
+#include "MOB_TransformComponent.h"
 class MOB_API MOB_CollisionComponent : public IComponent
 {
 public:
@@ -21,9 +22,9 @@ public:
 	*/
 	virtual std::vector<MOB_Vector> GetVertices(double angle = 0.0) = 0;
 
-	/* Moves all collider vertexes to position (x, y)
+	/* Updates the collider position to match the transform (rotation applied at collision time and draw time)
 	*/
-	virtual void ChangeColliderPosition(double x, double y) = 0;
+	virtual void ChangeColliderPosition(MOB_TransformComponent* transform) = 0;
 
 	static std::string componentType;
 

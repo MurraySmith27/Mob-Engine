@@ -64,6 +64,25 @@ MOB_Vector MOB_Vector::ProjectOnto(MOB_Vector direction, MOB_Vector vector) {
 
 }
 
+MOB_Vector MOB_Vector::UnitNormal(MOB_Vector vector) {
+	double n2 = 1;
+	double n1 = -vector.y / vector.x;
+
+	return MOB_Vector::Unit(n1, n2);
+}
+
+double MOB_Vector::getSignedMagnitude() {
+	if (y == 0 && x < 0) {
+		return -magnitude;
+	}
+	if (y < 0) {
+		return -magnitude;
+	}
+	else {
+		return magnitude;
+	}
+}
+
 MOB_Vector MOB_Vector::Unit(double x, double y) {
 	MOB_Vector new_vector = MOB_Vector(x, y);
 	return new_vector / new_vector.getMagnitude();

@@ -35,7 +35,7 @@ public:
 	//TODO: Add a collider factory that allows for easier creation of specific colliders.
 	/* Adds a square collider component to the game object.
 	*/
-	void AddSquareCollisionComponent(std::string& gameObjectName, double x, double y, double w, double h);
+	void AddSquareCollisionComponent(std::string& gameObjectName);
 
 	/* Adds script to the gameobject with specified name.
 	*/
