@@ -31,7 +31,7 @@ public:
 
 	/* Return the rectangle describing which location on the spritesheet contains the sprite.
 	*/
-	virtual SDL_Rect getSrcRect() const {
+	virtual SDL_Rect getSourceRect() const {
 		return _sourceRectangle;
 	}
 

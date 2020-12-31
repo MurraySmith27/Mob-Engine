@@ -47,7 +47,7 @@ void MOB_RenderingSystem::FrameUpdate() {
 
 void MOB_RenderingSystem::RenderGameObject(MOB_RenderingComponent* renderingComp, MOB_TransformComponent* transformComp) {
 	UpdatePositionFromTransform(renderingComp, transformComp);
-	SDL_RenderCopyEx(m_renderer, renderingComp->drawable.getTexture(), &renderingComp->drawable.getSrcRect(), &renderingComp->drawable.getDestRect(), transformComp->getAngle(), NULL, transformComp->getFlip());
+	SDL_RenderCopyEx(m_renderer, renderingComp->drawable.getTexture(), &renderingComp->drawable.getSourceRect(), &renderingComp->drawable.getDestRect(), transformComp->getAngle(), NULL, transformComp->getFlip());
 }
 
 void MOB_RenderingSystem::UpdatePositionFromTransform(MOB_RenderingComponent* renderingComp, MOB_TransformComponent* transformComp) {

@@ -24,6 +24,14 @@ public:
 	
 	int getH();
 
+	/*Change the source rectangle of the drawable. The object will be grabbed from the rectangle specified here in the
+	drawable's source png.
+	*/
+	void setSourceRect(int newX, int newY, int newW, int newH);
+
+	SDL_Rect getSourceRect();
+
+
 	/* The drawable associated with the component.
 	*/
 	IDrawable drawable;

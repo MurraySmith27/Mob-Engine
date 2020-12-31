@@ -26,4 +26,13 @@ int MOB_RenderingComponent::getH() {
 	return drawable.getDestRect().h;
 }
 
+
+void MOB_RenderingComponent::setSourceRect(int newX, int newY, int newW, int newH) {
+	drawable.setSourceRect(newX, newY, newW, newH);
+}
+
+SDL_Rect MOB_RenderingComponent::getSourceRect() {
+	return drawable.getSourceRect();
+}
+
 std::string MOB_RenderingComponent::componentType;
