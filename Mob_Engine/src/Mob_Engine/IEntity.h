@@ -22,7 +22,13 @@ public:
 	*/
 	template<class T>
 	T* GetComponent() {
-		return dynamic_cast<T*>(m_Components.at(T::componentType));
+		if (m_Components.count(T::componentType) > 0) {
+			dynamic_cast<T*>(m_Components.at(T::componentType));
+		}
+		else {
+			return NULL;
+		}
+		
 	}
 
 	/* Adds a component to the entity.
