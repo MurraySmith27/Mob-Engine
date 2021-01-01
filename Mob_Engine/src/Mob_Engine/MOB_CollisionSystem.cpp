@@ -17,7 +17,7 @@ MOB_CollisionSystem::MOB_CollisionSystem() {
 		}
 		components->Collision = entities[i]->GetComponent<MOB_CollisionComponent>();
 		if (components->Collision == NULL) {
-			std::cout << "Could not load in rendering component for gameobject named: " << entities[i]->getName() << "\n";
+			std::cout << "Could not load in collision component for gameobject named: " << entities[i]->getName() << "\n";
 		}
 		if (components->Transform != NULL && components->Collision != NULL) {
 			m_componentTuples.push_back(components);
