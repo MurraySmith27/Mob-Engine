@@ -67,7 +67,12 @@ bool MOB_InputManager::WasKeyReleased(const char* KeyName) {
 }
 
 bool MOB_InputManager::IsKeyHeld(const char* KeyName) {
-	return m_HeldKeys.at(KeyName);
+	if (m_HeldKeys.count(KeyName) > 0) {
+		return m_HeldKeys.at(KeyName);
+	}
+	else {
+		return false;
+	}
 }
 
 bool MOB_InputManager::WasMousePressed() {
