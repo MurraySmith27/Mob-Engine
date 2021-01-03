@@ -62,7 +62,7 @@ private:
 	std::vector<const char*> m_KeysReleasedThisFrame;
 
 	//Map of currently pressed down keys
-	std::map<const char*, bool> m_HeldKeys;
+	std::map<const char, bool> m_HeldKeys;
 
 	bool m_MouseDownThisFrame = false;
 

@@ -2,7 +2,7 @@
 #include <Math.h>
 
 
-MOB_Vector::MOB_Vector() {
+MOB_Vector::MOB_Vector() : x(0), y(0), magnitude(0) {
 
 }
 

@@ -29,13 +29,23 @@ void MOB_InputManager::ProcessKeyEvent(SDL_Event e) {
 		if (!e.key.repeat) {
 			const char* KeyName = SDL_GetKeyName(e.key.keysym.sym);
 			
-			m_HeldKeys.emplace(KeyName, true);
+			if (m_HeldKeys.count(*KeyName) == 0) {
+				m_HeldKeys.emplace(*KeyName, true);
+			}
+			else {
+				m_HeldKeys.at(*KeyName) = true;
+			}
 			m_KeysPressedThisFrame.push_back(KeyName);
 		}
 	}
 	else if (e.type == SDL_KEYUP) {
 		const char* KeyName = SDL_GetKeyName(e.key.keysym.sym);
-		m_HeldKeys.emplace(KeyName, false);
+		if (m_HeldKeys.count(*KeyName) == 0) {
+			m_HeldKeys.emplace(*KeyName, false);
+		}
+		else {
+			m_HeldKeys.at(*KeyName) = false;
+		}
 		m_KeysReleasedThisFrame.push_back(KeyName);
 	}
 	if (e.type == SDL_MOUSEBUTTONDOWN && e.button.button == SDL_BUTTON_LEFT) {
@@ -67,8 +77,8 @@ bool MOB_InputManager::WasKeyReleased(const char* KeyName) {
 }
 
 bool MOB_InputManager::IsKeyHeld(const char* KeyName) {
-	if (m_HeldKeys.count(KeyName) > 0) {
-		return m_HeldKeys.at(KeyName);
+	if (m_HeldKeys.count(*KeyName) > 0) {
+		return m_HeldKeys.at(*KeyName);
 	}
 	else {
 		return false;

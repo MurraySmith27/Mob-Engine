@@ -1,5 +1,5 @@
 #include "MOB_Engine.h"
-#include "BasicScript.h"
+#include "PlayerMovement.h"
 #include <SDL.h>
 
 int main(int argc, char** argv) {
@@ -16,13 +16,16 @@ int main(int argc, char** argv) {
 
 	std::string goName2 = "test2";
 	app->CreateGameObject(goName2);
-	app->AddRenderingComponent(goName2, spriteDir + "BlacksmithMainPose.png");
+	//app->AddRenderingComponent(goName2, spriteDir + "BlacksmithMainPose.png");
 	app->AddTransformComponent(goName2);
-	//app->AddSquareCollisionComponent(goName2);
+	app->AddSquareCollisionComponent(goName2);
 	
-	BasicScript* my_script = new BasicScript(goName);
+	
+	PlayerMovement* my_script = new PlayerMovement(goName);
 
 	app->AddScriptToGameObject(goName, my_script);
+
+
 
 	app->Run();
 	delete app;

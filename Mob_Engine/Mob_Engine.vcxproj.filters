@@ -306,6 +306,12 @@
     <ClInclude Include="src\Mob_Engine\MOB_Application.h">
       <Filter>src\Mob_Engine</Filter>
     </ClInclude>
+    <ClInclude Include="src\Mob_Engine\MOB_CollisionComponent.h">
+      <Filter>src\Mob_Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mob_Engine\MOB_CollisionSystem.h">
+      <Filter>src\Mob_Engine</Filter>
+    </ClInclude>
     <ClInclude Include="src\Mob_Engine\MOB_ComponentFactory.h">
       <Filter>src\Mob_Engine</Filter>
     </ClInclude>
@@ -313,6 +319,9 @@
       <Filter>src\Mob_Engine</Filter>
     </ClInclude>
     <ClInclude Include="src\Mob_Engine\MOB_GameObject.h">
+      <Filter>src\Mob_Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mob_Engine\MOB_InputManager.h">
       <Filter>src\Mob_Engine</Filter>
     </ClInclude>
     <ClInclude Include="src\Mob_Engine\MOB_RenderingComponent.h">
@@ -324,17 +333,18 @@
     <ClInclude Include="src\Mob_Engine\MOB_Sprite.h">
       <Filter>src\Mob_Engine</Filter>
     </ClInclude>
+    <ClInclude Include="src\Mob_Engine\MOB_SquareCollisionComponent.h">
+      <Filter>src\Mob_Engine</Filter>
+    </ClInclude>
     <ClInclude Include="src\Mob_Engine\MOB_TransformComponent.h">
       <Filter>src\Mob_Engine</Filter>
     </ClInclude>
     <ClInclude Include="src\Mob_Engine\MOB_TransformSystem.h">
       <Filter>src\Mob_Engine</Filter>
     </ClInclude>
-    <ClInclude Include="src\Mob_Engine\MOB_CollisionSystem.h" />
-    <ClInclude Include="src\Mob_Engine\MOB_CollisionComponent.h" />
-    <ClInclude Include="src\Mob_Engine\MOB_SquareCollisionComponent.h" />
-    <ClInclude Include="src\Mob_Engine\MOB_InputManager.h" />
-    <ClInclude Include="src\Mob_Engine\MOB_Vector.h" />
+    <ClInclude Include="src\Mob_Engine\MOB_Vector.h">
+      <Filter>src\Mob_Engine</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Mob_Engine\IComponent.cpp">
@@ -352,6 +362,12 @@
     <ClCompile Include="src\Mob_Engine\MOB_Application.cpp">
       <Filter>src\Mob_Engine</Filter>
     </ClCompile>
+    <ClCompile Include="src\Mob_Engine\MOB_CollisionComponent.cpp">
+      <Filter>src\Mob_Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mob_Engine\MOB_CollisionSystem.cpp">
+      <Filter>src\Mob_Engine</Filter>
+    </ClCompile>
     <ClCompile Include="src\Mob_Engine\MOB_ComponentFactory.cpp">
       <Filter>src\Mob_Engine</Filter>
     </ClCompile>
@@ -359,6 +375,9 @@
       <Filter>src\Mob_Engine</Filter>
     </ClCompile>
     <ClCompile Include="src\Mob_Engine\MOB_GameObject.cpp">
+      <Filter>src\Mob_Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mob_Engine\MOB_InputManager.cpp">
       <Filter>src\Mob_Engine</Filter>
     </ClCompile>
     <ClCompile Include="src\Mob_Engine\MOB_RenderingComponent.cpp">
@@ -370,17 +389,18 @@
     <ClCompile Include="src\Mob_Engine\MOB_Sprite.cpp">
       <Filter>src\Mob_Engine</Filter>
     </ClCompile>
+    <ClCompile Include="src\Mob_Engine\MOB_SquareCollisionComponent.cpp">
+      <Filter>src\Mob_Engine</Filter>
+    </ClCompile>
     <ClCompile Include="src\Mob_Engine\MOB_TransformComponent.cpp">
       <Filter>src\Mob_Engine</Filter>
     </ClCompile>
     <ClCompile Include="src\Mob_Engine\MOB_TransformSystem.cpp">
       <Filter>src\Mob_Engine</Filter>
     </ClCompile>
-    <ClCompile Include="src\Mob_Engine\MOB_CollisionSystem.cpp" />
-    <ClCompile Include="src\Mob_Engine\MOB_CollisionComponent.cpp" />
-    <ClCompile Include="src\Mob_Engine\MOB_SquareCollisionComponent.cpp" />
-    <ClCompile Include="src\Mob_Engine\MOB_InputManager.cpp" />
-    <ClCompile Include="src\Mob_Engine\MOB_Vector.cpp" />
+    <ClCompile Include="src\Mob_Engine\MOB_Vector.cpp">
+      <Filter>src\Mob_Engine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Libraries\SDL2-2.0.12\lib\x64\SDL2.dll">

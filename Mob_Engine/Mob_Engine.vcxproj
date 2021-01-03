@@ -190,11 +190,6 @@
     <ClInclude Include="Libraries\SDL2-2.0.12\include\SDL_vulkan.h" />
     <ClInclude Include="Libraries\SDL2-2.0.12\include\begin_code.h" />
     <ClInclude Include="Libraries\SDL2-2.0.12\include\close_code.h" />
-    <ClInclude Include="src\Mob_Engine\MOB_Vector.h" />
-    <ClInclude Include="src\Mob_Engine\MOB_InputManager.h" />
-    <ClInclude Include="src\Mob_Engine\MOB_SquareCollisionComponent.h" />
-    <ClInclude Include="src\Mob_Engine\MOB_CollisionComponent.h" />
-    <ClInclude Include="src\Mob_Engine\MOB_CollisionSystem.h" />
     <ClInclude Include="src\MOB_Engine.h" />
     <ClInclude Include="src\Mob_Engine\Core.h" />
     <ClInclude Include="src\Mob_Engine\IComponent.h" />
@@ -203,34 +198,39 @@
     <ClInclude Include="src\Mob_Engine\IScript.h" />
     <ClInclude Include="src\Mob_Engine\ISystem.h" />
     <ClInclude Include="src\Mob_Engine\MOB_Application.h" />
+    <ClInclude Include="src\Mob_Engine\MOB_CollisionComponent.h" />
+    <ClInclude Include="src\Mob_Engine\MOB_CollisionSystem.h" />
     <ClInclude Include="src\Mob_Engine\MOB_ComponentFactory.h" />
     <ClInclude Include="src\Mob_Engine\MOB_EntityManager.h" />
     <ClInclude Include="src\Mob_Engine\MOB_GameObject.h" />
+    <ClInclude Include="src\Mob_Engine\MOB_InputManager.h" />
     <ClInclude Include="src\Mob_Engine\MOB_RenderingComponent.h" />
     <ClInclude Include="src\Mob_Engine\MOB_RenderingSystem.h" />
     <ClInclude Include="src\Mob_Engine\MOB_Sprite.h" />
+    <ClInclude Include="src\Mob_Engine\MOB_SquareCollisionComponent.h" />
     <ClInclude Include="src\Mob_Engine\MOB_TransformComponent.h" />
     <ClInclude Include="src\Mob_Engine\MOB_TransformSystem.h" />
+    <ClInclude Include="src\Mob_Engine\MOB_Vector.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Mob_Engine\MOB_Vector.cpp" />
-    <ClCompile Include="src\Mob_Engine\MOB_InputManager.cpp" />
-    <ClCompile Include="src\Mob_Engine\MOB_SquareCollisionComponent.cpp" />
-    <ClCompile Include="src\Mob_Engine\MOB_CollisionComponent.cpp" />
-    <ClCompile Include="src\Mob_Engine\MOB_CollisionSystem.cpp" />
     <ClCompile Include="src\Mob_Engine\IComponent.cpp" />
     <ClCompile Include="src\Mob_Engine\IDrawable.cpp" />
     <ClCompile Include="src\Mob_Engine\IEntity.cpp" />
     <ClCompile Include="src\Mob_Engine\IScript.cpp" />
     <ClCompile Include="src\Mob_Engine\MOB_Application.cpp" />
+    <ClCompile Include="src\Mob_Engine\MOB_CollisionComponent.cpp" />
+    <ClCompile Include="src\Mob_Engine\MOB_CollisionSystem.cpp" />
     <ClCompile Include="src\Mob_Engine\MOB_ComponentFactory.cpp" />
     <ClCompile Include="src\Mob_Engine\MOB_EntityManager.cpp" />
     <ClCompile Include="src\Mob_Engine\MOB_GameObject.cpp" />
+    <ClCompile Include="src\Mob_Engine\MOB_InputManager.cpp" />
     <ClCompile Include="src\Mob_Engine\MOB_RenderingComponent.cpp" />
     <ClCompile Include="src\Mob_Engine\MOB_RenderingSystem.cpp" />
     <ClCompile Include="src\Mob_Engine\MOB_Sprite.cpp" />
+    <ClCompile Include="src\Mob_Engine\MOB_SquareCollisionComponent.cpp" />
     <ClCompile Include="src\Mob_Engine\MOB_TransformComponent.cpp" />
     <ClCompile Include="src\Mob_Engine\MOB_TransformSystem.cpp" />
+    <ClCompile Include="src\Mob_Engine\MOB_Vector.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Libraries\SDL2-2.0.12\lib\x64\SDL2.dll" />

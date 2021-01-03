@@ -1,6 +1,7 @@
 #ifndef VECTOR_HEADER
 #define VECTOR_HEADER
-class MOB_Vector
+#include "Core.h"
+class MOB_API MOB_Vector
 {
 public:
 
