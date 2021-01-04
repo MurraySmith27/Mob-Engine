@@ -36,6 +36,10 @@ void MOB_Application::AddSquareCollisionComponent(std::string& gameObjectName) {
 	m_componentFactory->AddSquareCollisionComponent(gameObjectName);
 }
 
+void MOB_Application::AddQuadCollisionComponent(std::string& gameObjectName, std::vector<MOB_Vector> vertices){
+	m_componentFactory->AddQuadCollisionComponent(gameObjectName, vertices);
+}
+
 void MOB_Application::CreateGameObject(std::string& name) {
 	MOB_EntityManager::getEntityManager()->CreateGameObject(name);
 }

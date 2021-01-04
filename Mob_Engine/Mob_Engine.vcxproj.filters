@@ -345,6 +345,7 @@
     <ClInclude Include="src\Mob_Engine\MOB_Vector.h">
       <Filter>src\Mob_Engine</Filter>
     </ClInclude>
+    <ClInclude Include="src\Mob_Engine\MOB_QuadCollisionComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Mob_Engine\IComponent.cpp">
@@ -401,6 +402,7 @@
     <ClCompile Include="src\Mob_Engine\MOB_Vector.cpp">
       <Filter>src\Mob_Engine</Filter>
     </ClCompile>
+    <ClCompile Include="src\Mob_Engine\MOB_QuadCollisionComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Libraries\SDL2-2.0.12\lib\x64\SDL2.dll">

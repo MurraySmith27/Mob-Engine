@@ -1,5 +1,7 @@
 #include "PlayerMovement.h"
 
+#include "Mob_Engine/MOB_EntityManager.h"
+#include <iostream>
 PlayerMovement::PlayerMovement(std::string& entityName) : IScript(entityName) {
 	transform = MOB_EntityManager::getEntityManager()->FindEntity(entityName)->GetComponent<MOB_TransformComponent>();
 	inputManager = MOB_InputManager::GetInputManager();
@@ -40,5 +42,7 @@ void PlayerMovement::FrameUpdate() {
 
 
 void PlayerMovement::OnCollision(std::string& entity1Name, std::string& entity2Name) {
+	MOB_TransformComponent* transform = MOB_EntityManager::getEntityManager()->FindEntity(m_entityName)->GetComponent<MOB_TransformComponent>();
 
+	std::cout << "(" << transform->getX() << "," << transform->getY() << ")" << std::endl;
 }

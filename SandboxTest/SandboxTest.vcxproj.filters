@@ -27,11 +27,9 @@
     <ClCompile Include="PlayerMovement.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="Assets\Sprites\BlacksmithMainPose.png">
-      <Filter>Resource Files</Filter>
-    </Image>
+    <ClCompile Include="QuadTestScript.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PlayerMovement.h">

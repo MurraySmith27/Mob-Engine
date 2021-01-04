@@ -40,11 +40,17 @@ void MOB_ComponentFactory::AddSquareCollisionComponent(std::string& name) {
 	if (transform == NULL) {
 		std::cout << "Could not create square collision component as this entity has no transform component." << std::endl;
 	}
+	//Here it will crash if transform is NULL. intended behaviour. TODO: Create a custom exception for this.
 	int x = transform->getX();
 	int y = transform->getY();
 	int w = transform->getW();
 	int h = transform->getH();
 	MOB_SquareCollisionComponent* component = new MOB_SquareCollisionComponent(x, y, w, h);
+	MOB_EntityManager::getEntityManager()->FindEntity(name)->AddComponent(component);
+}
+
+void MOB_ComponentFactory::AddQuadCollisionComponent(std::string& name, std::vector<MOB_Vector> vertices) {
+	MOB_QuadCollisionComponent* component = new MOB_QuadCollisionComponent(vertices);
 	MOB_EntityManager::getEntityManager()->FindEntity(name)->AddComponent(component);
 }
 

@@ -91,10 +91,14 @@ std::vector<std::tuple<std::shared_ptr<MOB_CollisionSystem::ComponentTuple>,
 			currentCollisionComponent = XExtremes.at(XExtremes.size() - 1);
 
 		for (int j = 0; j < XExtremes.size() - 1; j++) {
-			if ((std::get<1>(XExtremes.at(j)) <= std::get<1>(currentCollisionComponent) && 
+			/*if ((std::get<1>(XExtremes.at(j)) <= std::get<1>(currentCollisionComponent) && 
 				std::get<1>(currentCollisionComponent) <= std::get<2>(XExtremes.at(j))) || 
 				(std::get<1>(XExtremes.at(j)) <= std::get<2>(currentCollisionComponent) &&
-				std::get<2>(currentCollisionComponent) <= std::get<2>(XExtremes.at(j)))) {
+				std::get<2>(currentCollisionComponent) <= std::get<2>(XExtremes.at(j)))) {*/
+			if (!((std::get<1>(XExtremes.at(j)) > std::get<2>(currentCollisionComponent)) || 
+				(std::get<1>(currentCollisionComponent) > std::get<2>(XExtremes.at(j)))))
+			{
+
 
 				narrowPhaseCollisionTuples.push_back(std::make_tuple(std::get<0>(currentCollisionComponent), 
 					std::get<0>(XExtremes.at(j))));

@@ -36,6 +36,10 @@ public:
 	/* Adds a square collider component to the game object.
 	*/
 	void AddSquareCollisionComponent(std::string& gameObjectName);
+	
+	/* Adds a quad (generic four-sided) collider component to the game object.
+	*/
+	void AddQuadCollisionComponent(std::string& gameObjectName, std::vector<MOB_Vector> vertices);
 
 	/* Adds script to the gameobject with specified name.
 	*/
